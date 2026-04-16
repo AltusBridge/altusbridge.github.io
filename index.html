@@ -4,35 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Altus Bridge — Cross-Border Capital Advisory</title>
-<meta name="description" content="Cross-border structuring and capital advisory for India-linked opportunities. Altus Bridge helps fund managers, family offices, and sophisticated investors evaluate fund structures, jurisdiction options, and capital pathways.">
-<meta name="keywords" content="India fund structuring, AIF advisory, GIFT City, Mauritius, DIFC, cross-border capital, fund manager advisory, family office India, ECB advisory, capital advisory Mumbai">
+<meta name="description" content="Cross-border structuring and capital advisory for India-linked opportunities. Fund structuring, live mandates, co-investment platform, and cross-border payments.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#14120d;--ink-mid:#46433c;--ink-muted:#8a8680;--ink-faint:#b6b2ac;
-  --surface:#faf9f6;--surface-2:#f3f1ec;--surface-3:#eae7e0;
-  --border:#e2ddd6;--border-light:#ece9e3;
-  --gold:#c4a35a;--gold-light:#d4b87a;--gold-dark:#9a7a38;--gold-bg:#fdf8ee;
-  --dark:#16140f;--dark-2:#1e1c16;--dark-3:#28261f;
-  --serif:"Cormorant Garamond",Georgia,serif;
-  --sans:"DM Sans",system-ui,sans-serif
-}
+:root{--ink:#14120d;--ink-mid:#46433c;--ink-muted:#8a8680;--ink-faint:#b6b2ac;--surface:#faf9f6;--surface-2:#f3f1ec;--surface-3:#eae7e0;--border:#e2ddd6;--border-light:#ece9e3;--gold:#c4a35a;--gold-light:#d4b87a;--gold-dark:#9a7a38;--gold-bg:#fdf8ee;--dark:#16140f;--dark-2:#1e1c16;--dark-3:#28261f;--serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--surface);color:var(--ink);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,246,.95);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,246,.96);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem}
 .nav-logo{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.05em;color:var(--ink);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-links a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
 .nav-cta{display:inline-flex;align-items:center;padding:9px 22px;background:var(--dark);color:var(--surface);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;border-radius:2px;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
-
-/* HERO */
 #hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 3rem 5rem}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(196,163,90,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,163,90,.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
 .hero-circle-1{position:absolute;right:-100px;top:-100px;width:600px;height:600px;border-radius:50%;border:.5px solid rgba(196,163,90,.08);pointer-events:none}
@@ -44,86 +31,111 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,246,
 .hero-headline em{font-style:italic;color:var(--gold-light)}
 .hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.55);max-width:540px;line-height:1.75;margin-bottom:3rem}
 .hero-ctas{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.btn-hero-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:2px;transition:opacity .2s}
-.btn-hero-primary:hover{opacity:.88}
-.btn-hero-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border:.5px solid rgba(255,255,255,.2);border-radius:2px;transition:all .2s}
-.btn-hero-secondary:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:2px;transition:opacity .2s}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border:.5px solid rgba(255,255,255,.2);border-radius:2px;transition:all .2s}
+.btn-secondary:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:14px 20px;background:transparent;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.04em;text-decoration:none;transition:color .2s}
+.btn-ghost:hover{color:rgba(255,255,255,.7)}
+/* AUDIENCE ROUTING */
+.audience-section{background:var(--surface-2);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:3.5rem 3rem}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:6px;overflow:hidden;max-width:1100px;margin:0 auto}
+.audience-card{background:var(--surface);padding:2rem 1.75rem;transition:background .2s;text-decoration:none;display:block}
+.audience-card:hover{background:var(--gold-bg)}
+.audience-card:hover .audience-arrow{color:var(--gold)}
+.audience-eyebrow{font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.audience-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:.75rem;line-height:1.2}
+.audience-steps{list-style:none;padding:0;margin:0 0 1.25rem}
+.audience-steps li{font-size:12px;font-weight:300;color:var(--ink-muted);padding:5px 0 5px 14px;border-bottom:.5px solid var(--border-light);position:relative;line-height:1.5}
+.audience-steps li:last-child{border-bottom:none}
+.audience-steps li::before{content:"";position:absolute;left:0;top:11px;width:3px;height:3px;border-radius:50%;background:var(--gold)}
+.audience-arrow{font-size:12px;font-weight:500;color:var(--ink-muted);transition:color .2s}
+/* TOOLS STRIP */
+.tools-strip{background:var(--dark);padding:3rem 3rem;border-bottom:.5px solid rgba(255,255,255,.06)}
+.tools-strip-inner{max-width:1100px;margin:0 auto}
+.tools-strip-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem}
+.tools-strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden}
+.tool-strip-card{background:var(--dark-2);padding:1.5rem;text-decoration:none;display:block;transition:background .2s}
+.tool-strip-card:hover{background:var(--dark-3)}
+.tsc-badge{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;display:block}
+.tsc-title{font-family:var(--serif);font-size:17px;font-weight:400;color:#fff;margin-bottom:.4rem;line-height:1.2}
+.tsc-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.55}
 .hero-support{margin-top:1.5rem;font-size:12px;font-weight:300;color:rgba(255,255,255,.3);letter-spacing:.02em}
 .hero-stats{margin-top:5rem;padding-top:3rem;border-top:.5px solid rgba(255,255,255,.08);display:flex;gap:3rem;flex-wrap:wrap}
-.hero-stat{}
 .hero-stat-val{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--gold-light);line-height:1;margin-bottom:4px}
 .hero-stat-label{font-size:11px;font-weight:300;color:rgba(255,255,255,.35);letter-spacing:.04em}
-
-/* SECTION BASE */
 section{padding:6rem 3rem}
 .container{max-width:1100px;margin:0 auto}
 .section-label{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1rem}
 .section-label::before{content:"";display:inline-block;width:20px;height:.5px;background:var(--gold)}
-.section-title{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:400;letter-spacing:-.02em;line-height:1.1;color:var(--ink);margin-bottom:1rem}
-.section-intro{font-size:15px;font-weight:300;color:var(--ink-mid);max-width:520px;line-height:1.75}
-
-/* AUDIENCE SECTION */
-#audience{background:var(--surface);border-bottom:.5px solid var(--border)}
-.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.5rem;border:.5px solid var(--border);border-radius:4px;overflow:hidden}
-.audience-card{padding:2.25rem 2rem;border-right:.5px solid var(--border);background:var(--surface);transition:background .2s;cursor:default}
-.audience-card:last-child{border-right:none}
-.audience-card:hover{background:var(--surface-2)}
-.audience-num{font-family:var(--serif);font-size:13px;color:var(--gold);font-weight:400;margin-bottom:1rem}
-.audience-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:.75rem;line-height:1.2}
-.audience-desc{font-size:13px;font-weight:300;color:var(--ink-mid);line-height:1.7}
-
-/* WHAT WE HELP */
-#help{background:var(--surface-2);border-bottom:.5px solid var(--border)}
-.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem}
-.help-intro p{font-size:15px;font-weight:300;color:var(--ink-mid);line-height:1.8;margin-bottom:1.25rem}
-.help-intro strong{font-weight:500;color:var(--ink)}
-.help-list{display:flex;flex-direction:column;gap:0;border:.5px solid var(--border);border-radius:4px;overflow:hidden}
-.help-item{display:flex;align-items:center;gap:14px;padding:1rem 1.25rem;border-bottom:.5px solid var(--border-light);background:var(--surface);transition:background .2s}
-.help-item:last-child{border-bottom:none}
-.help-item:hover{background:var(--surface-3)}
-.help-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.help-text{font-size:14px;font-weight:400;color:var(--ink-mid)}
-
-/* TOOLS SECTION */
-#tools{background:var(--dark);border-bottom:.5px solid rgba(255,255,255,.06)}
-#tools .section-title{color:#fff}
-#tools .section-intro{color:rgba(255,255,255,.5)}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
-.tool-card{padding:2rem;border:.5px solid rgba(255,255,255,.1);border-radius:4px;background:rgba(255,255,255,.03);transition:background .2s;text-decoration:none;display:block}
-.tool-card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
-.tool-tag{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.tool-title{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;margin-bottom:.75rem;line-height:1.25}
-.tool-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.25rem}
-.tool-link{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.04em}
-
-/* WHY US */
-#why{background:var(--surface);border-bottom:.5px solid var(--border)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem}
-.why-points{display:flex;flex-direction:column;gap:1.5rem}
-.why-point{padding:1.5rem;border:.5px solid var(--border);border-radius:4px;background:var(--surface)}
-.why-point-num{font-family:var(--serif);font-size:13px;color:var(--gold);margin-bottom:.5rem}
-.why-point-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.35rem}
-.why-point-text{font-size:13px;font-weight:300;color:var(--ink-mid);line-height:1.65}
-.why-right{}
-.why-right p{font-size:15px;font-weight:300;color:var(--ink-mid);line-height:1.8;margin-bottom:1.25rem}
-.why-right strong{font-weight:500;color:var(--ink)}
-.credentials{margin-top:2rem;border-top:.5px solid var(--border);padding-top:2rem}
-.cred-row{display:flex;align-items:baseline;justify-content:space-between;padding:10px 0;border-bottom:.5px solid var(--border-light)}
-.cred-row:last-child{border-bottom:none}
-.cred-firm{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--ink)}
-.cred-role{font-size:12px;color:var(--ink-muted);font-weight:300}
-
-/* PROCESS */
-#process{background:var(--surface-2);border-bottom:.5px solid var(--border)}
-.process-steps{display:flex;flex-direction:column;gap:0;margin-top:3.5rem;border:.5px solid var(--border);border-radius:4px;overflow:hidden}
-.process-step{display:flex;align-items:flex-start;gap:2rem;padding:2rem;border-bottom:.5px solid var(--border-light);background:var(--surface);transition:background .2s}
-.process-step:last-child{border-bottom:none}
-.process-step:hover{background:var(--surface-2)}
-.process-step-num{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--gold);line-height:1;min-width:48px;padding-top:4px}
-.process-step-content{}
-.process-step-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
-.process-step-desc{font-size:14px;font-weight:300;color:var(--ink-mid);line-height:1.7}
-
+.section-title{font-family:var(--serif);font-size:clamp(30px,4vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.1;color:var(--ink);margin-bottom:1rem}
+.section-intro{font-size:15px;font-weight:300;color:var(--ink-mid);max-width:520px;line-height:1.75;margin-bottom:3rem}
+/* SERVICES GRID */
+#services{background:var(--surface);border-bottom:.5px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
+.service-card{padding:2rem;border:.5px solid var(--border);border-radius:4px;background:var(--surface);transition:background .2s}
+.service-card:hover{background:var(--surface-2)}
+.service-num{font-family:var(--serif);font-size:13px;color:var(--gold);margin-bottom:1rem}
+.service-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:.75rem;line-height:1.2}
+.service-desc{font-size:13px;font-weight:300;color:var(--ink-mid);line-height:1.7;margin-bottom:1rem}
+.service-tags{display:flex;flex-wrap:wrap;gap:5px}
+.stag{font-size:10px;font-weight:500;letter-spacing:.05em;padding:3px 9px;border-radius:999px;border:.5px solid var(--border);color:var(--ink-muted);background:var(--surface-2)}
+/* MANDATES PREVIEW */
+#mandates-preview{background:var(--dark);border-bottom:.5px solid rgba(255,255,255,.06)}
+#mandates-preview .section-title{color:#fff}
+#mandates-preview .section-intro{color:rgba(255,255,255,.5)}
+.mandate-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
+.mandate-card{padding:1.75rem;border:.5px solid rgba(255,255,255,.1);border-radius:4px;background:rgba(255,255,255,.03);transition:background .2s}
+.mandate-card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.2)}
+.mandate-status{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.mandate-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.mandate-title{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;margin-bottom:.5rem;line-height:1.25}
+.mandate-meta{font-size:12px;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:1.25rem;line-height:1.6}
+.mandate-tags{display:flex;flex-wrap:wrap;gap:5px}
+.mtag{font-size:10px;font-weight:500;padding:3px 9px;border-radius:999px;border:.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.mandates-cta{margin-top:2.5rem;text-align:center}
+.btn-outline-light{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:transparent;color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border:.5px solid rgba(255,255,255,.2);border-radius:2px;transition:all .2s}
+.btn-outline-light:hover{border-color:rgba(255,255,255,.5);color:#fff}
+/* CO-INVEST */
+#coinvest{background:var(--surface-2);border-bottom:.5px solid var(--border)}
+.coinvest-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem}
+.coinvest-left p{font-size:15px;font-weight:300;color:var(--ink-mid);line-height:1.8;margin-bottom:1.25rem}
+.coinvest-left strong{font-weight:500;color:var(--ink)}
+.coinvest-steps{display:flex;flex-direction:column;gap:0;border:.5px solid var(--border);border-radius:4px;overflow:hidden}
+.coinvest-step{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem;border-bottom:.5px solid var(--border-light);background:var(--surface);transition:background .2s}
+.coinvest-step:last-child{border-bottom:none}
+.coinvest-step:hover{background:var(--surface-2)}
+.cs-num{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold);min-width:32px;line-height:1;padding-top:2px}
+.cs-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.cs-desc{font-size:12px;font-weight:300;color:var(--ink-mid);line-height:1.6}
+/* PAYMENTS */
+#payments{background:var(--surface);border-bottom:.5px solid var(--border)}
+.payments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
+.payment-card{padding:2rem;border:.5px solid var(--border);border-radius:4px;background:var(--surface);transition:background .2s}
+.payment-card:hover{background:var(--surface-2)}
+.payment-icon{width:40px;height:40px;border-radius:50%;background:var(--gold-bg);border:.5px solid rgba(196,163,90,.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.payment-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:.6rem;line-height:1.2}
+.payment-desc{font-size:13px;font-weight:300;color:var(--ink-mid);line-height:1.7}
+/* NEWSLETTER */
+#newsletter{background:var(--dark);padding:5rem 3rem}
+#newsletter .section-title{color:#fff}
+.newsletter-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem}
+.nl-left p{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1rem}
+.nl-bullets{list-style:none;margin-top:1rem}
+.nl-bullets li{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);padding:6px 0 6px 18px;border-bottom:.5px solid rgba(255,255,255,.06);position:relative}
+.nl-bullets li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.nl-form{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);border-radius:6px;padding:2rem}
+.nl-form h3{font-family:var(--serif);font-size:24px;font-weight:400;color:#fff;margin-bottom:.5rem}
+.nl-form p{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:1.5rem}
+.form-field{margin-bottom:1rem}
+.form-field label{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:5px;letter-spacing:.04em}
+.form-field input,.form-field select{width:100%;height:40px;padding:0 14px;background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.15);border-radius:3px;font-family:var(--sans);font-size:13px;color:#fff;outline:none;transition:border-color .2s}
+.form-field input::placeholder{color:rgba(255,255,255,.25)}
+.form-field input:focus,.form-field select:focus{border-color:var(--gold)}
+.form-field select option{background:var(--dark);color:#fff}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;width:100%;padding:13px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;border:none;border-radius:3px;cursor:pointer;transition:opacity .2s;margin-top:.5rem}
+.btn-gold:hover{opacity:.88}
+.nl-note{font-size:10px;color:rgba(255,255,255,.2);margin-top:.75rem;text-align:center}
 /* INSIGHTS */
 #insights{background:var(--surface);border-bottom:.5px solid var(--border)}
 .insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:3.5rem}
@@ -133,64 +145,48 @@ section{padding:6rem 3rem}
 .insight-title{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--ink);line-height:1.25;margin-bottom:.75rem}
 .insight-desc{font-size:13px;font-weight:300;color:var(--ink-mid);line-height:1.6;margin-bottom:1.25rem}
 .insight-read{font-size:12px;font-weight:500;color:var(--gold)}
-
-/* CTA SECTION */
-#cta{background:var(--dark);padding:7rem 3rem}
+/* CTA */
+#cta{background:var(--surface-2);padding:6rem 3rem}
 #cta .container{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.cta-left h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.5rem}
-.cta-left p{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75}
-.cta-right{}
-.cta-cards{display:flex;flex-direction:column;gap:10px}
-.cta-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border:.5px solid rgba(255,255,255,.12);border-radius:4px;text-decoration:none;color:#fff;transition:all .2s}.cta-card.primary{background:var(--gold);border-color:var(--gold)}.cta-card.primary:hover{opacity:.88;background:var(--gold)}.cta-card.primary .cta-card-label{color:var(--dark);font-size:14px}.cta-card.primary .cta-card-detail{color:rgba(20,18,13,.6)}.cta-card.primary .cta-card-arrow{color:var(--dark)}.cta-card.primary .cta-card-icon{border-color:rgba(20,18,13,.2)}
-.cta-card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
-.cta-card-icon{width:38px;height:38px;border-radius:50%;border:.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cta-card-label{font-size:13px;font-weight:500}
-.cta-card-detail{font-size:11px;color:rgba(255,255,255,.4);font-weight:300}
-.cta-card-arrow{margin-left:auto;font-size:14px;color:rgba(255,255,255,.25)}
-.cta-note{margin-top:1.25rem;font-size:11px;color:rgba(255,255,255,.25);font-weight:300;text-align:center}
-
-/* FOOTER */
-footer{background:#0d0c09;padding:2rem 3rem;border-top:.5px solid rgba(255,255,255,.05)}
+.cta-left h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--ink);letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem}
+.cta-left p{font-size:15px;font-weight:300;color:var(--ink-mid);line-height:1.75}
+.contact-cards{display:flex;flex-direction:column;gap:10px}
+.contact-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border:.5px solid var(--border);border-radius:4px;text-decoration:none;color:var(--ink);transition:all .2s;background:var(--surface)}
+.contact-card:hover{background:var(--surface-3);border-color:var(--border)}
+.contact-card.primary{background:var(--dark);color:#fff;border-color:var(--dark)}
+.contact-card.primary:hover{opacity:.88}
+.cc-icon{width:36px;height:36px;border-radius:50%;border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card.primary .cc-icon{border-color:rgba(255,255,255,.15)}
+.cc-label{font-size:13px;font-weight:500}
+.cc-detail{font-size:11px;color:var(--ink-muted);font-weight:300}
+.contact-card.primary .cc-detail{color:rgba(255,255,255,.4)}
+.cc-arrow{margin-left:auto;font-size:14px;color:var(--ink-faint)}
+.contact-card.primary .cc-arrow{color:rgba(255,255,255,.3)}
+footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,255,255,.05)}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.footer-logo{font-family:var(--serif);font-size:16px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.04em}
+.footer-logo{font-family:var(--serif);font-size:16px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.04em;text-decoration:none}
 .footer-logo span{color:var(--gold)}
-.footer-links{display:flex;gap:1.5rem}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
 .footer-links a{font-size:11px;color:rgba(255,255,255,.25);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .footer-links a:hover{color:rgba(255,255,255,.5)}
 .footer-copy{font-size:11px;color:rgba(255,255,255,.2);font-weight:300}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:0 1.5rem}
-  .nav-links{display:none}
-  section{padding:4rem 1.5rem}
-  #hero{padding:7rem 1.5rem 4rem}
-  .audience-grid{grid-template-columns:1fr}
-  .audience-card{border-right:none;border-bottom:.5px solid var(--border)}
-  .audience-card:last-child{border-bottom:none}
-  .help-grid,.why-grid{grid-template-columns:1fr;gap:2.5rem}
-  .tools-grid{grid-template-columns:1fr}
-  #cta .container{grid-template-columns:1fr;gap:3rem}
-  .hero-stats{gap:2rem}
-  footer{padding:2rem 1.5rem}
-  .footer-inner{flex-direction:column;gap:.75rem;align-items:flex-start}
-}
+@media(max-width:900px){nav{padding:0 1.5rem}.nav-links{display:none}section{padding:4rem 1.5rem}#hero{padding:7rem 1.5rem 4rem}.services-grid,.mandate-scroll,.payments-grid{grid-template-columns:1fr}.coinvest-grid,.newsletter-grid,#cta .container{grid-template-columns:1fr;gap:2.5rem}.hero-stats{gap:2rem}.audience-grid{grid-template-columns:1fr}.tools-strip{padding:2.5rem 1.5rem}.tools-strip-grid{grid-template-columns:1fr 1fr}.audience-section{padding:2.5rem 1.5rem}footer{padding:2rem 1.5rem}}
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="#" class="nav-logo">Altus<span>Bridge</span></a>
+  <a href="index.html" class="nav-logo">Altus<span>Bridge</span></a>
   <ul class="nav-links">
-    <li><a href="#audience">Who we work with</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#insights">Insights</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="mandates.html">Mandates</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="gift-city-mauritius-difc.html">Insights</a></li>
     <li><a href="#cta">Contact</a></li>
   </ul>
   <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="nav-cta">Book a call</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-circle-1"></div>
@@ -198,271 +194,393 @@ footer{background:#0d0c09;padding:2rem 3rem;border-top:.5px solid rgba(255,255,2
   <div class="hero-inner">
     <p class="hero-label">Mumbai &middot; Independent Capital Advisory</p>
     <h1 class="hero-headline">Cross-border structuring<br>and capital advisory for<br><em>India-linked</em> opportunities.</h1>
-    <p class="hero-sub">Altus Bridge helps fund managers, family offices, and sophisticated investors evaluate fund structures, jurisdiction options, capital pathways, and execution considerations across India and offshore markets.</p>
+    <p class="hero-sub">Altus Bridge helps fund managers, family offices, and sophisticated investors evaluate fund structures, jurisdiction options, capital pathways, and live investment opportunities across India and global markets.</p>
     <div class="hero-ctas">
-      <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="btn-hero-primary">Request a structuring discussion &rarr;</a>
-      <a href="#tools" class="btn-hero-secondary">Explore decision tools</a>
+      <a href="mandates.html" class="btn-primary">View live mandates &rarr;</a>
+      <a href="submit-a-deal.html" class="btn-secondary">Submit a deal</a>
+      <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="btn-ghost">Request a discussion</a>
     </div>
-    <p class="hero-support">For sponsors, allocators, and private capital evaluating route, cost, timing, and execution fit.</p>
+    <p class="hero-support">For fund managers, family offices, HNIs, and corporates &middot; India &middot; GCC &middot; Africa &middot; Southeast Asia</p>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <p class="hero-stat-val">15+</p>
-        <p class="hero-stat-label">Years across DCM, project finance &amp; fund structuring</p>
+      <div class="hero-stat"><p class="hero-stat-val">15+</p><p class="hero-stat-label">Years across DCM, project finance &amp; fund structuring</p></div>
+      <div class="hero-stat"><p class="hero-stat-val">5</p><p class="hero-stat-label">Live mandates across private credit, real assets &amp; alternatives</p></div>
+      <div class="hero-stat"><p class="hero-stat-val">Global South</p><p class="hero-stat-label">India &middot; West Asia &middot; Africa &middot; Southeast Asia corridor</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE ROUTING — who lands here, where do they go -->
+<div class="audience-section">
+  <div style="max-width:1100px;margin:0 auto 1.5rem">
+    <p style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Where to start</p>
+    <p style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--ink)">What brings you here?</p>
+  </div>
+  <div class="audience-grid">
+    <a href="tools.html#tools" class="audience-card">
+      <p class="audience-eyebrow">Fund manager</p>
+      <h3 class="audience-title">Evaluating a fund structure or jurisdiction</h3>
+      <ul class="audience-steps">
+        <li>Jurisdiction Selector — find your fit in 2 min</li>
+        <li>AIF Cost Calculator — estimate setup economics</li>
+        <li>AIF Category I &amp; II guide</li>
+        <li>Book a structuring discussion</li>
+      </ul>
+      <span class="audience-arrow">Start with the tools &rarr;</span>
+    </a>
+    <a href="submit-a-deal.html" class="audience-card">
+      <p class="audience-eyebrow">Promoter / CFO / banker</p>
+      <h3 class="audience-title">Seeking capital for a transaction</h3>
+      <ul class="audience-steps">
+        <li>Submit a Deal — reviewed within 1 business day</li>
+        <li>Active mandate: &ge;&#8377;100 Cr &middot; 15%+ IRR</li>
+        <li>PE exit bridge, LBO, promoter funding</li>
+        <li>WhatsApp Abhishek directly</li>
+      </ul>
+      <span class="audience-arrow">Submit your transaction &rarr;</span>
+    </a>
+    <a href="mandates.html" class="audience-card">
+      <p class="audience-eyebrow">Family office / LP</p>
+      <h3 class="audience-title">Evaluating India-linked investment opportunities</h3>
+      <ul class="audience-steps">
+        <li>View live mandates — 5 active across asset classes</li>
+        <li>Co-investment platform — deal-by-deal SPV access</li>
+        <li>GIFT City vs Mauritius vs DIFC jurisdiction guide</li>
+        <li>Register for LP data room access</li>
+      </ul>
+      <span class="audience-arrow">Explore mandates &rarr;</span>
+    </a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What we do</p>
+    <h2 class="section-title">Advisory services</h2>
+    <p class="section-intro">End-to-end capital advisory across fund structuring, deal placement, co-investment, and cross-border payments.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">01</p>
+        <h3 class="service-title">Fund Structuring</h3>
+        <p class="service-desc">AIF Category I/II setup, GIFT City FME, DIFC QIF, Mauritius VCC, master-feeder and SPV frameworks. Full documentation — LPA, PPM, IMA.</p>
+        <div class="service-tags"><span class="stag">AIF</span><span class="stag">GIFT City</span><span class="stag">DIFC</span><span class="stag">Mauritius</span></div>
       </div>
-      <div class="hero-stat">
-        <p class="hero-stat-val">6</p>
-        <p class="hero-stat-label">Jurisdictions &mdash; DIFC, GIFT City, Mauritius, Singapore, Luxembourg, Cayman</p>
+      <div class="service-card">
+        <p class="service-num">02</p>
+        <h3 class="service-title">Fundraising &amp; Placement</h3>
+        <p class="service-desc">LP targeting, investor roadshow positioning, and deal placement across family offices, HNIs, and institutions in India, GCC, Singapore, and Africa.</p>
+        <div class="service-tags"><span class="stag">Family Offices</span><span class="stag">HNIs</span><span class="stag">GCC</span><span class="stag">Singapore</span></div>
       </div>
-      <div class="hero-stat">
-        <p class="hero-stat-val">Global South</p>
-        <p class="hero-stat-label">India &middot; West Asia &middot; Africa &middot; Southeast Asia capital corridor</p>
+      <div class="service-card">
+        <p class="service-num">03</p>
+        <h3 class="service-title">Co-Investment Platform</h3>
+        <p class="service-desc">Deal-by-deal SPV co-investment for GCC, Singapore, and African capital into India-linked opportunities. You source the deal — we structure the vehicle and syndicate the capital.</p>
+        <div class="service-tags"><span class="stag">SPV</span><span class="stag">Co-Invest</span><span class="stag">Deal-by-Deal</span></div>
+      </div>
+      <div class="service-card">
+        <p class="service-num">04</p>
+        <h3 class="service-title">Debt Syndication</h3>
+        <p class="service-desc">Lender consortium building, credit committee navigation, and structured debt solutions for infrastructure, renewable energy, real assets, and acquisition financing.</p>
+        <div class="service-tags"><span class="stag">Project Finance</span><span class="stag">ECB</span><span class="stag">Infrastructure</span></div>
+      </div>
+      <div class="service-card">
+        <p class="service-num">05</p>
+        <h3 class="service-title">Africa Wealth Advisory</h3>
+        <p class="service-desc">Wealth structuring and cross-border investment solutions for African family offices and HNWIs. Access to India AIFs, DIFC platforms, and Mauritius vehicles via established relationships.</p>
+        <div class="service-tags"><span class="stag">Sub-Saharan Africa</span><span class="stag">East Africa</span><span class="stag">Mauritius</span></div>
+      </div>
+      <div class="service-card">
+        <p class="service-num">06</p>
+        <h3 class="service-title">Cross-Border Payments</h3>
+        <p class="service-desc">Multi-currency account solutions, cross-border remittance, and payment infrastructure for fund managers, family offices, and corporates operating across multiple jurisdictions.</p>
+        <div class="service-tags"><span class="stag">Multi-Currency</span><span class="stag">Fund Payments</span><span class="stag">FX</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AUDIENCE -->
-<section id="audience">
+<!-- LIVE MANDATES PREVIEW -->
+<section id="mandates-preview">
   <div class="container">
-    <p class="section-label">Who we work with</p>
-    <h2 class="section-title">Sophisticated capital seeking practical clarity</h2>
-    <p class="section-intro">We advise sophisticated capital looking for practical clarity before committing to a structure, a route, or a launch process.</p>
-    <div class="audience-grid">
-      <div class="audience-card">
-        <p class="audience-num">01</p>
-        <h3 class="audience-title">Fund Managers</h3>
-        <p class="audience-desc">Evaluating India-linked fund structures, offshore vehicles, launch economics, and investor-readiness pathways. AIF Category I/II, GIFT City FME, Mauritius GBL, DIFC QIF &mdash; and the master-feeder architectures that combine them.</p>
+    <p class="section-label">Live Mandates</p>
+    <h2 class="section-title" style="color:#fff">Active deal pipeline</h2>
+    <p class="section-intro">Selected live mandates where capital is being placed or structured. Reach out if you are an investor or advisor with a relevant opportunity.</p>
+    <div class="mandate-scroll">
+      <div class="mandate-card">
+        <p class="mandate-status">Placement Open</p>
+        <h3 class="mandate-title">Diageo PLC Fixed Coupon Note</h3>
+        <p class="mandate-meta">Fixed income &middot; Diageo PLC underlying &middot; Structured product via DFSA-regulated multi-family office &middot; Targeting HNI &amp; family office investors</p>
+        <div class="mandate-tags"><span class="mtag">Fixed Income</span><span class="mtag">DFSA</span><span class="mtag">HNI / FO</span></div>
       </div>
-      <div class="audience-card">
-        <p class="audience-num">02</p>
-        <h3 class="audience-title">Family Offices</h3>
-        <p class="audience-desc">Assessing flexible cross-border routes for private allocations, co-investments, and strategic exposure to India and adjacent Global South opportunities. GCC, Singapore, and African family offices evaluating India entry and structure.</p>
+      <div class="mandate-card">
+        <p class="mandate-status">Fundraising Active</p>
+        <h3 class="mandate-title">Onterra Capital AIF — Real Estate Credit</h3>
+        <p class="mandate-meta">SEBI Category II AIF &middot; &#8377;300 Cr + &#8377;300 Cr greenshoe &middot; 18&ndash;20% IRR &middot; Secured real estate credit &middot; MMR &amp; Bangalore growth corridors</p>
+        <div class="mandate-tags"><span class="mtag">AIF Cat II</span><span class="mtag">Real Estate</span><span class="mtag">18-20% IRR</span></div>
       </div>
-      <div class="audience-card">
-        <p class="audience-num">03</p>
-        <h3 class="audience-title">UHNIs &amp; Corporates</h3>
-        <p class="audience-desc">Seeking clarity on route, control, recurring cost, and execution considerations before capital deployment. Acquisition financing, ECB structuring, private credit, and offshore vehicle design for sophisticated individual and corporate capital.</p>
+      <div class="mandate-card">
+        <p class="mandate-status">Pre-IPO Fundraise</p>
+        <h3 class="mandate-title">Soleos Energy — Solar EPC</h3>
+        <p class="mandate-meta">Gujarat-based solar EPC &amp; developer &middot; Main Board IPO-bound &middot; 654 MW order book &middot; Institutional &amp; family office LP targeting</p>
+        <div class="mandate-tags"><span class="mtag">Solar</span><span class="mtag">Pre-IPO</span><span class="mtag">Gujarat</span></div>
       </div>
+    </div>
+    <div class="mandates-cta">
+      <a href="mandates.html" class="btn-outline-light">View all 5 mandates &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- WHAT WE HELP -->
-<section id="help">
+<!-- CO-INVEST PLATFORM -->
+<section id="coinvest">
   <div class="container">
-    <div class="help-grid">
+    <div class="coinvest-grid">
       <div>
-        <p class="section-label">What we help you evaluate</p>
-        <h2 class="section-title">Where complexity meets capital</h2>
-        <div class="help-intro" style="margin-top:1.5rem">
-          <p>Cross-border opportunities often look straightforward at the top level, but become complex once jurisdiction, cost, compliance, investor fit, and execution timing come into focus.</p>
-          <p>Altus Bridge helps you work through the practical considerations before you commit time and capital &mdash; bringing a <strong>structuring lens and commercial judgment</strong> to the questions that matter most.</p>
+        <p class="section-label">Co-Investment Platform</p>
+        <h2 class="section-title">Invest alongside Altus Bridge</h2>
+        <div class="coinvest-left" style="margin-top:1.5rem">
+          <p>Altus Bridge operates a <strong>deal-by-deal co-investment platform</strong> for sophisticated investors seeking direct access to India-linked private credit, infrastructure, real assets, and alternative investment opportunities.</p>
+          <p>Each deal is structured via a <strong>GIFT City or Mauritius SPV</strong>, with Altus Bridge as deal lead. Investors participate alongside institutional capital with clearly defined entry terms, security, and exit horizon.</p>
+          <p>Target investors: GCC family offices &middot; Singapore institutions &middot; African HNWIs &middot; NRIs under LRS &middot; Domestic Indian family offices.</p>
+          <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">Express interest &rarr;</a>
         </div>
       </div>
+      <div class="coinvest-steps">
+        <div class="coinvest-step"><span class="cs-num">01</span><div><p class="cs-title">Deal sourced &amp; structured</p><p class="cs-desc">Altus Bridge originates, conducts due diligence, and structures the SPV — GIFT City IBU or Mauritius GBL depending on LP geography.</p></div></div>
+        <div class="coinvest-step"><span class="cs-num">02</span><div><p class="cs-title">Soft-circle &amp; LP onboarding</p><p class="cs-desc">Deal brief shared with pre-qualified LPs. Commitments collected, KYC completed via admin partner. Subscription documents executed.</p></div></div>
+        <div class="coinvest-step"><span class="cs-num">03</span><div><p class="cs-title">SPV closes &amp; capital deployed</p><p class="cs-desc">Capital flows into target via structured instrument — NCD, secured loan, or equity co-invest. Security created and registered.</p></div></div>
+        <div class="coinvest-step"><span class="cs-num">04</span><div><p class="cs-title">Quarterly reporting &amp; exit</p><p class="cs-desc">LP updates via fund administrator. Exit at liquidity event — IPO, PE secondary, strategic sale, or debt repayment.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSS-BORDER PAYMENTS -->
+<section id="payments">
+  <div class="container">
+    <p class="section-label">Cross-Border Payments</p>
+    <h2 class="section-title">Seamless capital movement across borders</h2>
+    <p class="section-intro">Practical payment infrastructure for fund managers, family offices, and corporates operating across India, GCC, Africa, and Southeast Asia.</p>
+    <div class="payments-grid">
+      <div class="payment-card">
+        <div class="payment-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5" width="18" height="18"><circle cx="10" cy="10" r="8"/><path d="M10 2c0 0-4 3.5-4 8s4 8 4 8"/><path d="M10 2c0 0 4 3.5 4 8s-4 8-4 8"/><line x1="2" y1="10" x2="18" y2="10"/></svg>
+        </div>
+        <h3 class="payment-title">Multi-Currency Accounts</h3>
+        <p class="payment-desc">USD, GBP, EUR, AED, SGD, and INR accounts for family offices and HNIs. Hold, convert, and send across 40+ currencies without the friction of traditional banking. Ideal for GCC and Singapore investors accessing India opportunities.</p>
+      </div>
+      <div class="payment-card">
+        <div class="payment-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5" width="18" height="18"><path d="M3 10h14M13 6l4 4-4 4"/><path d="M7 4H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+        </div>
+        <h3 class="payment-title">Cross-Border Remittance</h3>
+        <p class="payment-desc">Fast, compliant cross-border payments for businesses operating across the India–GCC–Africa corridor. Trade settlements, inter-company transfers, and supplier payments at institutional FX rates without correspondent banking delays.</p>
+      </div>
+      <div class="payment-card">
+        <div class="payment-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5" width="18" height="18"><rect x="2" y="5" width="16" height="12" rx="2"/><path d="M2 9h16"/><circle cx="6" cy="13" r="1" fill="var(--gold)"/></svg>
+        </div>
+        <h3 class="payment-title">Fund Payment Infrastructure</h3>
+        <p class="payment-desc">Capital call processing, LP distribution management, and multi-currency fund accounting for AIF managers and SPV administrators. Integrates with GIFT City IBU and Mauritius fund banking to streamline the full capital lifecycle.</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding:1.5rem;background:var(--gold-bg);border-left:2px solid var(--gold);border-radius:0 4px 4px 0">
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.7">Payment solutions are delivered in partnership with regulated FCA, DFSA, and MAS-compliant payment providers. Altus Bridge acts as an introduction and advisory intermediary — not as a regulated payment institution. <strong style="color:var(--ink)">Contact us to discuss your specific requirements.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="tools-strip-inner">
+    <div class="tools-strip-header">
       <div>
-        <div class="help-list">
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">India fund setup &amp; structuring &mdash; AIF, FME, SPV, master-feeder</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">GIFT City &amp; offshore jurisdiction comparison &mdash; DIFC, Mauritius, Singapore</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">Setup costs &amp; recurring operating economics</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">Capital raising &amp; investor-readiness considerations</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">India entry routes for offshore &amp; Global South capital</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">Private credit &amp; special-situations structuring</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">ECB &amp; cross-border acquisition financing</span></div>
-          <div class="help-item"><span class="help-dot"></span><span class="help-text">Debt syndication &amp; lender consortium building</span></div>
-        </div>
+        <p style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Decision tools</p>
+        <p style="font-family:var(--serif);font-size:24px;font-weight:400;color:#fff;line-height:1.2">Built for real structuring questions</p>
       </div>
+      <a href="tools.html" style="font-size:12px;font-weight:500;color:var(--gold);text-decoration:none;letter-spacing:.04em;white-space:nowrap">All tools &rarr;</a>
+    </div>
+    <div class="tools-strip-grid">
+      <a href="jurisdiction-selector.html" class="tool-strip-card">
+        <span class="tsc-badge">5-question flow</span>
+        <p class="tsc-title">Jurisdiction Selector</p>
+        <p class="tsc-desc">Find your ideal fund structure in under 2 minutes.</p>
+      </a>
+      <a href="aif-fee-calculator.html" class="tool-strip-card">
+        <span class="tsc-badge">Cost calculator</span>
+        <p class="tsc-title">AIF Setup Cost Calculator</p>
+        <p class="tsc-desc">Estimate setup and operating costs — FY 2025–26.</p>
+      </a>
+      <a href="submit-a-deal.html" class="tool-strip-card">
+        <span class="tsc-badge">Deal intake</span>
+        <p class="tsc-title">Submit a Deal</p>
+        <p class="tsc-desc">PE exit bridge, LBO, pre-IPO. Reviewed in 1 business day.</p>
+      </a>
+      <a href="gift-city-mauritius-difc.html" class="tool-strip-card">
+        <span class="tsc-badge">Practitioner guide</span>
+        <p class="tsc-title">Jurisdiction Comparison</p>
+        <p class="tsc-desc">GIFT City vs Mauritius vs DIFC vs Singapore.</p>
+      </a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- TOOLS -->
-<section id="tools">
+<!-- NEWSLETTER SIGNUP -->
+<section id="newsletter">
   <div class="container">
-    <p class="section-label">Decision tools</p>
-    <h2 class="section-title">Built for real structuring questions</h2>
-    <p class="section-intro">Our tools are designed to help sponsors and investors get an initial view on cost, route, and suitability before moving into a deeper advisory discussion.</p>
-    <div class="tools-grid">
-      <a href="aif-fee-calculator.html" class="tool-card">
-        <p class="tool-tag">Interactive Calculator</p>
-        <h3 class="tool-title">India Fund Setup Cost Calculator</h3>
-        <p class="tool-desc">Estimate indicative setup and operating costs across SEBI AIF and GIFT City IFSCA structures. Verified against FY 2025-26 regulatory schedules.<br><span style="color:rgba(255,255,255,.35);font-size:12px">For AIF Category I &amp; II India-linked funds &mdash; domestic and offshore.</span></p>
-        <span class="tool-link">Open calculator &rarr;</span>
-      </a>
-      <a href="gift-city-mauritius-difc.html" class="tool-card">
-        <p class="tool-tag">Practitioner Guide</p>
-        <h3 class="tool-title">Jurisdiction Comparison &mdash; GIFT City vs Mauritius vs DIFC</h3>
-        <p class="tool-desc">Compare route-level considerations across GIFT City, Mauritius, DIFC, and Singapore. Regulation, tax, investor access, and use cases explained.</p>
-        <span class="tool-link">Read guide &rarr;</span>
-      </a>
-      <a href="aif-category-i-ii-domestic-gift-city.html" class="tool-card">
-        <p class="tool-tag">SEBI vs GIFT Deep Dive</p>
-        <h3 class="tool-title">AIF Category I &amp; II &mdash; Domestic vs GIFT City</h3>
-        <p class="tool-desc">Full comparison of domestic SEBI AIF and GIFT City IFSCA structures &mdash; parameters, tax, setup process, and which to choose based on LP profile.</p>
-        <span class="tool-link">Read guide &rarr;</span>
-      </a>
-      <a href="private-credit-pe-exit-bridge-lbo-promoter-funding.html" class="tool-card">
-        <p class="tool-tag">Capital Available &middot; Active Mandate</p>
-        <h3 class="tool-title">Private Credit &mdash; PE Exit Bridge, LBO &amp; Promoter Funding</h3>
-        <p class="tool-desc">Active mandate: &ge;&#8377;100 Cr ticket, 15%+ IRR target. Deal criteria, fit checklist, and process for qualifying transactions.</p><ul style="list-style:none;margin:.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:4px"><li style="font-size:12px;color:rgba(255,255,255,.4);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&rsaquo;</span>PE exit bridge &mdash; promoter buyout pre-IPO</li><li style="font-size:12px;color:rgba(255,255,255,.4);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&rsaquo;</span>LBO acquisition debt alongside PE sponsors</li><li style="font-size:12px;color:rgba(255,255,255,.4);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&rsaquo;</span>Promoter funding with credible PE on cap table</li></ul>
-        <span class="tool-link">View mandate &rarr;</span>
-      </a>
-      <a href="india-ecb-liberalisation-2026.html" class="tool-card">
-        <p class="tool-tag">Regulatory Analysis &middot; 2026</p>
-        <h3 class="tool-title">India&rsquo;s ECB Liberalisation &mdash; What Changed for Offshore Lenders</h3>
-        <p class="tool-desc">The February 2026 RBI notification opens non-recourse structures, market-based pricing, and a new USD private credit asset class in India.</p>
-        <span class="tool-link">Read analysis &rarr;</span>
-      </a>
-      <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="tool-card" style="border-color:rgba(196,163,90,.3)">
-        <p class="tool-tag">Advisory</p>
-        <h3 class="tool-title">Bespoke Structuring Discussion</h3>
-        <p class="tool-desc">For transactions or fund structures that require a tailored advisory conversation rather than a standard tool. Book a 30-minute call directly.</p>
-        <span class="tool-link">Book a call &rarr;</span>
-      </a>
+    <div class="newsletter-grid">
+      <div class="nl-left">
+        <p class="section-label" style="color:var(--gold)">Updates</p>
+        <h2 class="section-title" style="color:#fff;margin-bottom:1.5rem">The Altus Bridge Briefing</h2>
+        <p>A monthly update on live mandates, market insights, regulatory changes, and deal origination opportunities across India, GCC, and the Global South.</p>
+        <ul class="nl-bullets">
+          <li>Live mandate updates &amp; new deal opportunities</li>
+          <li>Regulatory &amp; ECB framework changes</li>
+          <li>AIF, GIFT City &amp; Mauritius structuring developments</li>
+          <li>Cross-border capital flow intelligence</li>
+          <li>Selected co-investment opportunities for pre-qualified investors</li>
+        </ul>
+        <p style="margin-top:1.5rem;font-size:12px;color:rgba(255,255,255,.3)">Sent monthly &middot; No spam &middot; Unsubscribe anytime &middot; <a href="updates.html" style="color:var(--gold);text-decoration:none">View past issues</a></p>
+      </div>
+      <div class="nl-form">
+        <h3>Subscribe to the Briefing</h3>
+        <p>Join fund managers, family offices, and advisors receiving the monthly update.</p>
+        <!--
+          SETUP STEP: Replace YOUR_FORM_ID below with your Formspree form ID.
+          1. Go to formspree.io → New Form → copy the ID (e.g. xyzabc12)
+          2. Replace YOUR_FORM_ID with that ID
+          3. Set redirect to: https://altusbridge.in?subscribed=1
+        -->
+        <form action="https://formspree.io/f/xlgajdra" method="POST">
+          <input type="hidden" name="_subject" value="New Altus Bridge Briefing subscriber">
+          <input type="hidden" name="_next" value="https://www.altusbridge.in?subscribed=1">
+          <div class="form-field">
+            <label>Full name</label>
+            <input type="text" name="name" placeholder="Abhishek Mohta" required>
+          </div>
+          <div class="form-field">
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-field">
+            <label>I am a</label>
+            <select name="investor_type">
+              <option>Family Office / UHNW</option>
+              <option>Fund Manager / AIF Sponsor</option>
+              <option>Corporate / CFO</option>
+              <option>Investment Advisor / CA / Banker</option>
+              <option>Individual HNI</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-gold">Subscribe &rarr;</button>
+          <p class="nl-note">Your details are kept confidential and never shared.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHY -->
-<section id="why">
+<!-- INSIGHTS -->
+<section id="insights">
   <div class="container">
-    <div class="why-grid">
-      <div class="why-points">
-        <p class="section-label">Why Altus Bridge</p>
-        <h2 class="section-title">Structuring lens. Commercial judgment.</h2>
-        <div class="why-points" style="margin-top:2rem">
-          <div class="why-point">
-            <p class="why-point-num">01</p>
-            <p class="why-point-title">Cross-border perspective</p>
-            <p class="why-point-text">Grounded in real structuring considerations across DIFC, GIFT City, Mauritius, Singapore, and African markets &mdash; not theoretical frameworks.</p>
-          </div>
-          <div class="why-point">
-            <p class="why-point-num">02</p>
-            <p class="why-point-title">Practical focus</p>
-            <p class="why-point-text">Route, cost, timing, and execution. We help you evaluate the decisions that matter before you commit time and capital to a process.</p>
-          </div>
-          <div class="why-point">
-            <p class="why-point-num">03</p>
-            <p class="why-point-title">Built for sophisticated capital</p>
-            <p class="why-point-text">Not a broad retail offering. Our practice is designed for fund managers, family offices, UHNIs, and corporates with complex cross-border requirements.</p>
-          </div>
-          <div class="why-point">
-            <p class="why-point-num">04</p>
-            <p class="why-point-title">Tools and insights that improve decisions</p>
-            <p class="why-point-text">Interactive calculators, jurisdiction guides, and regulatory analysis &mdash; designed to improve decision quality before mandate stage.</p>
-          </div>
-        </div>
-      </div>
-      <div class="why-right">
-        <p>Abhishek Mohta brings <strong>15+ years</strong> across investment banking, debt capital markets, fund structuring, and cross-border advisory &mdash; with hands-on deal exposure across renewable energy, infrastructure, ports, and real assets.</p>
-        <p>Prior to building Altus Bridge, he held roles at <strong>Natixis, HDFC Bank, Essar Group, Amicorp, and Capwise Financial Services</strong> &mdash; spanning APAC, Sub-Saharan Africa, DIFC, GIFT City, Mauritius, and Luxembourg.</p>
-        <p>Altus Bridge operates as an <strong>independent advisory practice</strong> &mdash; without conflicts from fund management, product distribution, or institutional balance sheet constraints.</p>
-        <div class="credentials">
-          <div class="cred-row"><span class="cred-firm">Altus Bridge</span><span class="cred-role">Founder &amp; Independent Advisor</span></div>
-          <div class="cred-row"><span class="cred-firm">Capwise Financial Services</span><span class="cred-role">AVP &mdash; Debt Capital Markets</span></div>
-          <div class="cred-row"><span class="cred-firm">Amicorp Group</span><span class="cred-role">Fund &amp; Corporate Services</span></div>
-          <div class="cred-row"><span class="cred-firm">Natixis</span><span class="cred-role">Structured Finance</span></div>
-          <div class="cred-row"><span class="cred-firm">HDFC Bank</span><span class="cred-role">Debt Capital Markets</span></div>
-          <div class="cred-row"><span class="cred-firm">Essar Group / Essar Ports</span><span class="cred-role">International Business Development &amp; Project Finance</span></div>
-        </div>
-      </div>
+    <p class="section-label">Knowledge Base</p>
+    <h2 class="section-title">Practitioner guides &amp; tools</h2>
+    <p class="section-intro">In-depth articles on fund structuring, capital markets, and cross-border advisory.</p>
+    <div class="insights-grid">
+      <a href="aif-fee-calculator.html" class="insight-card">
+        <p class="insight-cat">Interactive Tool</p>
+        <h3 class="insight-title">AIF Fee &amp; Expense Calculator</h3>
+        <p class="insight-desc">Estimate SEBI AIF and GIFT City IFSCA fund setup costs and annual compliance fees. Verified FY 2025-26 rates.</p>
+        <span class="insight-read">Open calculator &rarr;</span>
+      </a>
+      <a href="gift-city-mauritius-difc.html" class="insight-card">
+        <p class="insight-cat">Practitioner Guide</p>
+        <h3 class="insight-title">GIFT City vs Mauritius vs DIFC</h3>
+        <p class="insight-desc">Jurisdiction selection for India-focused funds — regulation, tax, investor access, and use cases explained.</p>
+        <span class="insight-read">Read guide &rarr;</span>
+      </a>
+      <a href="aif-category-i-ii-domestic-gift-city.html" class="insight-card">
+        <p class="insight-cat">SEBI vs GIFT Deep Dive</p>
+        <h3 class="insight-title">AIF Category I &amp; II — Domestic vs GIFT City</h3>
+        <p class="insight-desc">Full comparison — parameters, tax pass-through, eligible investors, setup process, and decision framework.</p>
+        <span class="insight-read">Read guide &rarr;</span>
+      </a>
+      <a href="india-ecb-liberalisation-2026.html" class="insight-card">
+        <p class="insight-cat">Regulatory Analysis &middot; 2026</p>
+        <h3 class="insight-title">India&rsquo;s ECB Liberalisation 2026</h3>
+        <p class="insight-desc">The February 2026 RBI notification opens non-recourse structures, market-based pricing, and a new USD private credit asset class.</p>
+        <span class="insight-read">Read analysis &rarr;</span>
+      </a>
+      <a href="private-credit-pe-exit-bridge-lbo-promoter-funding.html" class="insight-card">
+        <p class="insight-cat">Capital Available &middot; Active</p>
+        <h3 class="insight-title">Private Credit — PE Exit Bridge &amp; LBO</h3>
+        <p class="insight-desc">Active mandate: &ge;&#8377;100 Cr ticket, 15%+ IRR. Deal criteria, fit checklist, and process for qualifying transactions.</p>
+        <span class="insight-read">View mandate &rarr;</span>
+      </a>
+      <a href="updates.html" class="insight-card" style="background:var(--gold-bg);border-color:rgba(196,163,90,.3)">
+        <p class="insight-cat">Monthly Update</p>
+        <h3 class="insight-title">The Altus Bridge Briefing</h3>
+        <p class="insight-desc">Monthly market updates, mandate news, regulatory developments, and co-investment opportunities for subscribers.</p>
+        <span class="insight-read">Subscribe &rarr;</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <p class="section-label">How we work</p>
-    <h2 class="section-title">From question to clarity</h2>
-    <p class="section-intro">Sophisticated prospects want to understand how an engagement moves from problem definition to decision support.</p>
-    <div class="process-steps" style="margin-top:3.5rem">
-      <div class="process-step">
-        <span class="process-step-num">01</span>
-        <div class="process-step-content">
-          <p class="process-step-title">Clarify the objective</p>
-          <p class="process-step-desc">We begin with the investor profile, use case, geography, and intended capital pathway &mdash; understanding what you are trying to achieve before evaluating how to structure it.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <span class="process-step-num">02</span>
-        <div class="process-step-content">
-          <p class="process-step-title">Assess route and structure options</p>
-          <p class="process-step-desc">We narrow down the relevant structuring pathways based on investor fit, economics, regulatory requirements, and execution considerations &mdash; giving you a clear view before you commit.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <span class="process-step-num">03</span>
-        <div class="process-step-content">
-          <p class="process-step-title">Move toward implementation readiness</p>
-          <p class="process-step-desc">Where relevant, the discussion progresses from indicative analysis toward a more tailored advisory engagement &mdash; covering documentation, fundraising, lender syndication, or regulatory navigation.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
+<!-- CONTACT -->
 <section id="cta">
   <div class="container">
     <div class="cta-left">
       <h2>Discuss your structuring question confidentially.</h2>
-      <p>If you are evaluating a structure, a route, or a launch decision, Altus Bridge can help you assess the practical considerations before you commit time and capital. Shared details are treated confidentially.</p>
+      <p>Fund managers, family offices, HNIs, and corporates evaluating structures, routes, or investment opportunities across India and the Global South.</p>
     </div>
-    <div class="cta-right">
-      <div class="cta-cards">
-        <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="cta-card primary">
-          <div class="cta-card-icon">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="3" width="16" height="16" rx="2"/><line x1="14" y1="1" x2="14" y2="5"/><line x1="6" y1="1" x2="6" y2="5"/><line x1="2" y1="8" x2="18" y2="8"/></svg>
-          </div>
-          <div>
-            <p class="cta-card-label">Book a call</p>
-            <p class="cta-card-detail">Google Calendar &middot; 30 minutes</p>
-          </div>
-          <span class="cta-card-arrow">&rarr;</span>
-        </a>
-        <a href="https://wa.me/919930136884" target="_blank" class="cta-card">
-          <div class="cta-card-icon">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M10 1C5.03 1 1 5.03 1 10c0 1.76.46 3.41 1.26 4.85L1 19l4.27-1.38A9 9 0 1 0 10 1zm4.13 12.93c-.22-.11-1.32-.65-1.53-.72-.2-.07-.35-.11-.5.11-.15.22-.58.72-.71.87-.13.15-.26.17-.49.06-.22-.11-.94-.35-1.79-1.1-.66-.59-1.1-1.32-1.23-1.54-.13-.22-.01-.34.1-.45l.33-.38c.11-.13.15-.22.22-.36.07-.14.04-.27-.02-.38-.06-.11-.5-1.21-.69-1.65-.18-.43-.37-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86s.8 2.16.91 2.31c.11.14 1.57 2.4 3.8 3.36.53.23.95.37 1.27.47.54.17 1.03.15 1.42.09.43-.07 1.32-.54 1.51-1.06.18-.52.18-.97.13-1.06-.05-.09-.2-.15-.43-.26z"/></svg>
-          </div>
-          <div>
-            <p class="cta-card-label">WhatsApp</p>
-            <p class="cta-card-detail">+91 99301 36884</p>
-          </div>
-          <span class="cta-card-arrow">&rarr;</span>
-        </a>
-        <a href="mailto:abhishek@altusbridge.in" class="cta-card">
-          <div class="cta-card-icon">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="16" height="12" rx="2"/><polyline points="2,4 10,11 18,4"/></svg>
-          </div>
-          <div>
-            <p class="cta-card-label">Email</p>
-            <p class="cta-card-detail">abhishek&#64;altusbridge&#46;in</p>
-          </div>
-          <span class="cta-card-arrow">&rarr;</span>
-        </a>
-        <a href="https://www.linkedin.com/in/abhishekmohta" target="_blank" class="cta-card">
-          <div class="cta-card-icon">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M17 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM7 15H4.5V8H7v7zM5.75 6.88a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88zM16 15h-2.5v-3.5c0-.84-.02-1.92-1.17-1.92s-1.33.91-1.33 1.86V15H8.5V8H11v1.01h.03c.35-.66 1.2-1.36 2.47-1.36 2.64 0 3.13 1.74 3.13 3.99V15H16z"/></svg>
-          </div>
-          <div>
-            <p class="cta-card-label">LinkedIn</p>
-            <p class="cta-card-detail">linkedin.com/in/abhishekmohta</p>
-          </div>
-          <span class="cta-card-arrow">&rarr;</span>
-        </a>
-      </div>
-      <p class="cta-note">Shared details are treated confidentially &middot; Mumbai, India</p>
+    <div class="contact-cards">
+      <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="contact-card primary">
+        <div class="cc-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="3" width="16" height="16" rx="2"/><line x1="14" y1="1" x2="14" y2="5"/><line x1="6" y1="1" x2="6" y2="5"/><line x1="2" y1="8" x2="18" y2="8"/></svg></div>
+        <div><p class="cc-label">Book a call</p><p class="cc-detail">Google Calendar &middot; 30 minutes</p></div>
+        <span class="cc-arrow">&rarr;</span>
+      </a>
+      <a href="https://wa.me/919930136884" target="_blank" class="contact-card">
+        <div class="cc-icon"><svg viewBox="0 0 20 20" fill="var(--gold)" width="16" height="16"><path d="M10 1C5.03 1 1 5.03 1 10c0 1.76.46 3.41 1.26 4.85L1 19l4.27-1.38A9 9 0 1 0 10 1zm4.13 12.93c-.22-.11-1.32-.65-1.53-.72-.2-.07-.35-.11-.5.11-.15.22-.58.72-.71.87-.13.15-.26.17-.49.06-.22-.11-.94-.35-1.79-1.1-.66-.59-1.1-1.32-1.23-1.54-.13-.22-.01-.34.1-.45l.33-.38c.11-.13.15-.22.22-.36.07-.14.04-.27-.02-.38s-.5-1.21-.69-1.65c-.18-.43-.37-.37-.5-.38h-.43c-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86s.8 2.16.91 2.31c.11.14 1.57 2.4 3.8 3.36.53.23.95.37 1.27.47.54.17 1.03.15 1.42.09.43-.07 1.32-.54 1.51-1.06.18-.52.18-.97.13-1.06-.05-.09-.2-.15-.43-.26z"/></svg></div>
+        <div><p class="cc-label">WhatsApp</p><p class="cc-detail">+91 99301 36884</p></div>
+        <span class="cc-arrow">&rarr;</span>
+      </a>
+      <a href="mailto:abhishek@altusbridge.in" class="contact-card">
+        <div class="cc-icon"><svg viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="16" height="12" rx="2"/><polyline points="2,4 10,11 18,4"/></svg></div>
+        <div><p class="cc-label">Email</p><p class="cc-detail">abhishek&#64;altusbridge&#46;in</p></div>
+        <span class="cc-arrow">&rarr;</span>
+      </a>
+      <a href="https://www.linkedin.com/in/abhishekmohta" target="_blank" class="contact-card">
+        <div class="cc-icon"><svg viewBox="0 0 20 20" fill="var(--gold)" width="16" height="16"><path d="M17 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM7 15H4.5V8H7v7zM5.75 6.88a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88zM16 15h-2.5v-3.5c0-.84-.02-1.92-1.17-1.92s-1.33.91-1.33 1.86V15H8.5V8H11v1.01h.03c.35-.66 1.2-1.36 2.47-1.36 2.64 0 3.13 1.74 3.13 3.99V15H16z"/></svg></div>
+        <div><p class="cc-label">LinkedIn</p><p class="cc-detail">linkedin.com/in/abhishekmohta</p></div>
+        <span class="cc-arrow">&rarr;</span>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <span class="footer-logo">Altus<span>Bridge</span></span>
+    <a href="index.html" class="footer-logo">Altus<span>Bridge</span></a>
     <div class="footer-links">
-      <a href="gift-city-mauritius-difc.html">GIFT City vs Mauritius</a>
-      <a href="aif-category-i-ii-domestic-gift-city.html">AIF Guide</a>
+      <a href="tools.html">Tools</a>
+      <a href="mandates.html">Mandates</a>
+      <a href="submit-a-deal.html">Submit a Deal</a>
       <a href="aif-fee-calculator.html">Fee Calculator</a>
+      <a href="gift-city-mauritius-difc.html">GIFT City Guide</a>
       <a href="india-ecb-liberalisation-2026.html">ECB 2026</a>
     </div>
-    <span class="footer-copy">&copy; 2026 Abhishek Mohta &middot; Altus Bridge &middot; Mum
+    <span class="footer-copy">&copy; 2026 Abhishek Mohta &middot; Altus Bridge &middot; Mumbai</span>
+  </div>
+</footer>
+
+<script>
+function handleSubscribe(btn){
+  btn.textContent='Subscribed ✓';
+  btn.style.background='#3a6e3a';
+  btn.style.color='#fff';
+  setTimeout(()=>{btn.textContent='Subscribe →';btn.style.background='';btn.style.color='';},3000);
+}
+</script>
+</body>
+</html>

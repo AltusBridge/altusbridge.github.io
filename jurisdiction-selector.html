@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jurisdiction Selector — Find Your Ideal Fund Structure | Altus Bridge</title>
+<meta name="description" content="Answer 5 questions and get a recommended fund structure — SEBI AIF, GIFT City FME, Mauritius GBL, or DIFC QIF. Interactive tool by Altus Bridge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#14120d;--ink-mid:#46433c;--ink-muted:#8a8680;--ink-faint:#b6b2ac;
+  --surface:#faf9f6;--surface-2:#f3f1ec;--surface-3:#eae7e0;
+  --border:#e2ddd6;--border-light:#ece9e3;
+  --gold:#c4a35a;--gold-light:#d4b87a;--gold-dark:#9a7a38;--gold-bg:#fdf8ee;
+  --dark:#16140f;--dark-2:#1e1c16;
+  --green:#2d6a4f;--green-bg:#e8f5ee;--green-border:#a8d5bb;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--dark);color:#fff;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* NAV */
+nav{background:rgba(22,20,15,.95);backdrop-filter:blur(16px);border-bottom:.5px solid rgba(255,255,255,.08);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;position:sticky;top:0;z-index:50}
+.nav-logo{font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.85);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+
+/* HERO */
+.tool-hero{padding:4rem 2.5rem 3rem;text-align:center;position:relative}
+.tool-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(196,163,90,.07) 0%,transparent 70%);pointer-events:none}
+.tool-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:10px}
+.tool-label::before,.tool-label::after{content:"";display:inline-block;width:24px;height:.5px;background:var(--gold)}
+.tool-title{font-family:var(--serif);font-size:clamp(32px,5vw,60px);font-weight:400;line-height:1.08;letter-spacing:-.02em;color:#fff;margin-bottom:1rem}
+.tool-title em{font-style:italic;color:var(--gold-light)}
+.tool-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.45);max-width:520px;margin:0 auto;line-height:1.7}
+
+/* MAIN TOOL CONTAINER */
+.tool-wrap{max-width:760px;margin:0 auto;padding:2rem 2.5rem 5rem}
+
+/* PROGRESS BAR */
+.progress-bar{margin-bottom:2.5rem}
+.progress-steps{display:flex;align-items:center;gap:0;margin-bottom:.75rem}
+.prog-step{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;position:relative}
+.prog-step+.prog-step{margin-left:4px}
+.prog-step-fill{height:100%;background:var(--gold);border-radius:999px;width:0%;transition:width .4s ease}
+.progress-text{font-size:11px;font-weight:400;color:rgba(255,255,255,.6);letter-spacing:.04em}
+
+/* QUESTION CARD */
+.question-card{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);border-radius:8px;padding:2.5rem;margin-bottom:1rem;animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.q-text{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);font-weight:400;color:#fff;line-height:1.3;margin-bottom:.5rem}
+.q-hint{font-size:13px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:2rem;line-height:1.6}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:.75rem}
+.option{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.1);border-radius:6px;cursor:pointer;transition:all .2s;text-align:left}
+.option:hover{background:rgba(255,255,255,.07);border-color:rgba(196,163,90,.4)}
+.option.selected{background:rgba(196,163,90,.1);border-color:var(--gold)}
+.option-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.option.selected .option-radio{border-color:var(--gold);background:var(--gold)}
+.option.selected .option-radio::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--dark)}
+.option-content{}
+.option-label{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:2px;line-height:1.3}
+.option.selected .option-label{color:#fff}
+.option-detail{font-size:12px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.5}
+
+/* NAVIGATION BUTTONS */
+.nav-btns{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem}
+.btn-prev{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:transparent;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;border:.5px solid rgba(255,255,255,.12);border-radius:3px;cursor:pointer;transition:all .2s}
+.btn-prev:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.65)}
+.btn-prev:disabled{opacity:.25;cursor:not-allowed}
+.btn-next{display:inline-flex;align-items:center;gap:6px;padding:10px 28px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;border:none;border-radius:3px;cursor:pointer;transition:opacity .2s}
+.btn-next:hover{opacity:.88}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+
+/* RESULT CARD */
+.result-wrap{animation:fadeUp .4s ease both}
+.result-badge{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.result-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.result-title{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.02em}
+.result-subtitle{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:2.5rem;line-height:1.7}
+
+/* RESULT DETAILS */
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.result-box{padding:1.5rem;border:.5px solid rgba(255,255,255,.1);border-radius:6px;background:rgba(255,255,255,.03)}
+.result-box-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.75rem}
+.result-box-content{font-size:13px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.65}
+.result-box-content strong{color:#fff;font-weight:500}
+.result-box-list{list-style:none;padding:0;margin:0}
+.result-box-list li{font-size:13px;font-weight:300;color:rgba(255,255,255,.6);padding:5px 0 5px 16px;position:relative;border-bottom:.5px solid rgba(255,255,255,.05);line-height:1.5}
+.result-box-list li:last-child{border-bottom:none}
+.result-box-list li::before{content:"";position:absolute;left:0;top:12px;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+
+/* SECONDARY OPTION */
+.secondary-rec{background:rgba(255,255,255,.02);border:.5px solid rgba(255,255,255,.07);border-radius:6px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.secondary-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.5rem}
+.secondary-title{font-size:15px;font-weight:500;color:rgba(255,255,255,.65);margin-bottom:.35rem;font-family:var(--serif)}
+.secondary-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* SCORE BARS */
+.score-section{margin-bottom:1.5rem}
+.score-label-row{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.75rem}
+.score-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.score-name{font-size:12px;font-weight:400;color:rgba(255,255,255,.55);width:160px;flex-shrink:0}
+.score-bar-track{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:999px;transition:width .8s ease .2s}
+.score-pct{font-size:11px;color:rgba(255,255,255,.7);width:32px;text-align:right;flex-shrink:0}
+
+/* CTA BLOCK */
+.result-ctas{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:2rem}
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:3px;transition:opacity .2s}
+.cta-primary:hover{opacity:.88}
+.cta-secondary{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:transparent;color:rgba(255,255,255,.6);font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;text-decoration:none;border:.5px solid rgba(255,255,255,.15);border-radius:3px;transition:all .2s}
+.cta-secondary:hover{border-color:rgba(255,255,255,.7);color:#fff}
+.restart-btn{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:1.25rem;padding:10px;background:transparent;color:rgba(255,255,255,.65);font-family:var(--sans);font-size:12px;font-weight:400;border:none;cursor:pointer;transition:color .2s;width:100%}
+.restart-btn:hover{color:rgba(255,255,255,.5)}
+
+/* DISCLAIMER */
+.tool-disclaimer{margin-top:2.5rem;padding:1.25rem;background:rgba(255,255,255,.02);border:.5px solid rgba(255,255,255,.06);border-radius:4px}
+.tool-disclaimer p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.65}
+
+/* FOOTER */
+footer{border-top:.5px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--serif);font-size:15px;color:rgba(255,255,255,.6);text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.45)}
+
+@media(max-width:640px){
+  .tool-wrap{padding:1.5rem 1.25rem 4rem}
+  .tool-hero{padding:3rem 1.25rem 2rem}
+  nav{padding:0 1.25rem}
+  .result-grid{grid-template-columns:1fr}
+  .result-ctas{grid-template-columns:1fr}
+  footer{padding:1.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Altus<span>Bridge</span></a>
+  <a href="index.html#tools" class="nav-back">← All tools</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="tool-label">Interactive Tool</p>
+  <h1 class="tool-title">Find your <em>ideal</em><br>fund structure</h1>
+  <p class="tool-sub">Answer 5 questions about your investors, asset class, and capital requirements. Get a recommended jurisdiction and structure in under 2 minutes.</p>
+</div>
+
+<div class="tool-wrap">
+  <div class="progress-bar">
+    <div class="progress-steps" id="progress-steps"></div>
+    <div class="progress-text" id="progress-text">Question 1 of 5</div>
+  </div>
+
+  <div id="tool-body"></div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Altus<span>Bridge</span></a>
+  <span class="footer-copy">© 2026 Altus Bridge · Mumbai · abhishek&#64;altusbridge&#46;in</span>
+</footer>
+
+<script>
+const QUESTIONS = [
+  {
+    id: 'investors',
+    num: 'Question 01',
+    text: 'Where are your primary investors (LPs) based?',
+    hint: 'Choose the geography that best describes your core LP base. This is the single most important factor in structure selection.',
+    options: [
+      { value: 'india', label: 'India — residents, HNIs, family offices', detail: 'Indian residents, domestic family offices, corporate treasuries, NRIs investing under LRS' },
+      { value: 'gcc', label: 'GCC — UAE, Saudi Arabia, Kuwait, Qatar', detail: 'Royal family offices, UHNWIs, sovereign wealth, DFSA-regulated entities in DIFC' },
+      { value: 'singapore', label: 'Singapore / Southeast Asia', detail: 'Single-family offices, institutions, VCC structures, MAS-regulated funds' },
+      { value: 'africa', label: 'Africa — Sub-Saharan / East Africa', detail: 'Family offices, HNWIs, institutional capital from East and Sub-Saharan Africa' },
+      { value: 'mixed', label: 'Mixed — two or more geographies', detail: 'LP base spans multiple regions — requires master-feeder or multi-jurisdiction approach' }
+    ]
+  },
+  {
+    id: 'asset',
+    num: 'Question 02',
+    text: 'What asset class or strategy is the fund focused on?',
+    hint: 'SEBI AIF categories are defined by strategy. This determines which regulatory framework is most appropriate.',
+    options: [
+      { value: 'private_credit', label: 'Private credit / structured debt', detail: 'NCDs, secured loans, PE exit bridge, acquisition finance, real estate credit' },
+      { value: 'infrastructure', label: 'Infrastructure / renewable energy', detail: 'Solar, wind, BESS, ports, roads — equity or debt to infrastructure assets' },
+      { value: 'real_estate', label: 'Real estate / real assets', detail: 'Residential, commercial, warehousing — equity or secured credit to developers' },
+      { value: 'growth_equity', label: 'Growth equity / pre-IPO', detail: 'Minority equity in growth-stage or pre-IPO companies in India' },
+      { value: 'alternatives', label: 'Alternative / tangible assets', detail: 'Scotch whisky, luxury assets, collectibles, non-correlated return strategies' }
+    ]
+  },
+  {
+    id: 'ticket',
+    num: 'Question 03',
+    text: 'What is your target fund size or minimum LP ticket?',
+    hint: 'Fund size determines regulatory thresholds. SEBI AIF minimum corpus is ₹20 Cr; GIFT City FME minimum is USD 3M for non-retail funds.',
+    options: [
+      { value: 'small', label: 'Under ₹50 Cr / USD 5M', detail: 'Early-stage raise or small club deal — deal-by-deal SPV may be more appropriate than a full fund' },
+      { value: 'mid', label: '₹50–300 Cr / USD 5–35M', detail: 'Mid-market fund — SEBI AIF or GIFT City FME both viable; structure depends on LP geography' },
+      { value: 'large', label: '₹300 Cr–1,000 Cr / USD 35–120M', detail: 'Institutional-scale fund — full AIF or GIFT City fund with feeder structures for offshore LPs' },
+      { value: 'xlarge', label: 'Above ₹1,000 Cr / USD 120M+', detail: 'Large fund — likely requires master-feeder architecture and multiple regulatory approvals' }
+    ]
+  },
+  {
+    id: 'currency',
+    num: 'Question 04',
+    text: 'Do your investors want to invest in INR or foreign currency (USD/EUR)?',
+    hint: 'Currency denomination affects which jurisdiction is most efficient. GIFT City IBUs can handle both INR and USD; Mauritius typically USD.',
+    options: [
+      { value: 'inr', label: 'INR — Indian Rupee', detail: 'Domestic investors, NRIs via LRS in INR, Indian corporate capital — SEBI AIF is the natural choice' },
+      { value: 'usd', label: 'USD / EUR / GBP — foreign currency', detail: 'Offshore investors wanting dollar-denominated exposure to India — GIFT City or Mauritius preferred' },
+      { value: 'both', label: 'Both INR and foreign currency LPs', detail: 'Mixed LP base — master-feeder structure with domestic AIF master and offshore feeder is most efficient' }
+    ]
+  },
+  {
+    id: 'timeline',
+    num: 'Question 05',
+    text: 'What is your timeline to first close?',
+    hint: 'Regulatory timelines vary significantly. SEBI AIF takes 10–16 weeks; GIFT City FME 8–12 weeks; DIFC QIF can be done in 2–3 weeks for quick structures.',
+    options: [
+      { value: 'urgent', label: 'Under 8 weeks — deal-driven urgency', detail: 'Specific transaction needs capital now — SPV or DIFC QIF is faster than full fund registration' },
+      { value: 'normal', label: '3–6 months — standard timeline', detail: 'Planning ahead — enough time for full SEBI AIF or GIFT City FME registration' },
+      { value: 'relaxed', label: '6–12 months — building properly', detail: 'Time to do it right — full fund documentation, LP roadshow, and regulatory process' },
+      { value: 'flexible', label: 'Flexible — not time-constrained', detail: 'Evaluating options — structure selection more important than speed' }
+    ]
+  }
+];
+
+const STRUCTURES = {
+  SEBI_AIF: {
+    name: 'SEBI AIF Category II',
+    short: 'Domestic AIF',
+    regulator: 'SEBI',
+    jurisdiction: 'India',
+    currency: 'INR',
+    timeline: '10–16 weeks',
+    minCorpus: '₹20 Cr',
+    tax: 'Pass-through (no fund-level tax)',
+    color: '#c4a35a',
+    pros: ['Familiar to Indian LPs and domestic family offices', 'Pass-through tax treatment — no fund-level tax', 'No FEMA complexity for Indian resident investors', 'Well-established ecosystem — lawyers, trustees, administrators', 'Units can be listed on BSE/NSE post lock-in'],
+    cons: ['INR only — no USD denomination', 'Offshore LPs face FEMA/RBI documentation requirements', 'No access to GIFT City IBU debt facilities']
+  },
+  GIFT_FME: {
+    name: 'GIFT City FME',
+    short: 'GIFT City Fund',
+    regulator: 'IFSCA',
+    jurisdiction: 'GIFT City, Gujarat',
+    currency: 'USD / INR',
+    timeline: '8–12 weeks',
+    minCorpus: 'USD 3M (non-retail)',
+    tax: '10-year tax holiday + pass-through',
+    color: '#d4b87a',
+    pros: ['10-year tax holiday on IFSC activities', 'USD denomination — preferred by NRI and offshore LPs', 'GIFT City IBU access for USD project finance and ECB', 'No STT, CTT, or stamp duty on IFSC transactions', 'Dual INR/USD operation possible', 'GST-exempt management fee services'],
+    cons: ['Ecosystem still maturing vs. Mumbai/Mauritius', 'Foreign LP familiarity lower than Mauritius', 'Treated as offshore for FEMA — India deployment needs FDI/FVCI route']
+  },
+  MAURITIUS_GBL: {
+    name: 'Mauritius GBL / VCC',
+    short: 'Mauritius Fund',
+    regulator: 'FSC Mauritius',
+    jurisdiction: 'Mauritius',
+    currency: 'USD / Multi-currency',
+    timeline: '6–10 weeks',
+    minCorpus: 'No statutory minimum',
+    tax: 'GBL treaty benefits; source-based CGT post-2016',
+    color: '#a8c5a0',
+    pros: ['Deep ecosystem — 30+ years of India-linked fund structuring', 'VCC allows legal sub-fund segregation — ideal for project finance lenders', 'Singapore and African LPs highly familiar and comfortable', 'Access to 46 DTAAs including Africa corridor', 'MCB, ABSA, SBM banking relationships established'],
+    cons: ['Capital gains on Indian equities taxed at source post-2016 DTAA renegotiation', 'Substance requirements have increased', 'FATF grey-listing in 2021 (since removed) — residual KYC friction with some LPs']
+  },
+  DIFC_QIF: {
+    name: 'DIFC QIF / SPV',
+    short: 'DIFC Structure',
+    regulator: 'DFSA',
+    jurisdiction: 'DIFC, Dubai',
+    currency: 'USD / AED',
+    timeline: '2–4 weeks (QIF)',
+    minCorpus: 'USD 50K (QIF)',
+    tax: 'No UAE tax; India deployment per India-UAE bilateral',
+    color: '#9ec5d4',
+    pros: ['Natural domicile for GCC family offices and sovereign funds', 'DFSA regulation gives highest institutional credibility in West Asia', 'Qualified Investor Fund (QIF) — fastest setup (15-day registration)', 'Ideal for deal-by-deal co-investment alongside institutional partner', 'Nasdaq Dubai listing access for regional capital markets'],
+    cons: ['Higher substance requirements — genuine DIFC presence needed', 'Higher setup and compliance costs vs. Mauritius or GIFT City', 'India DTAA benefit limited for pure tax optimisation']
+  },
+  MASTER_FEEDER: {
+    name: 'Master-Feeder Structure',
+    short: 'Multi-Jurisdiction',
+    regulator: 'SEBI + IFSCA / FSC',
+    jurisdiction: 'India + GIFT City or Mauritius',
+    currency: 'INR + USD',
+    timeline: '16–24 weeks',
+    minCorpus: 'Depends on master fund',
+    tax: 'Pass-through at master; feeder-level per LP jurisdiction',
+    color: '#c4a35a',
+    pros: ['Serves both Indian and offshore LPs in one structure', 'Each LP type invests in the vehicle most tax-efficient for them', 'Single deployment entity in India — clean for portfolio companies', 'Lender-familiar structure for project finance', 'Increasingly the market standard for mid-sized India funds'],
+    cons: ['Higher setup cost and complexity', 'Two regulatory filings (SEBI + IFSCA or FSC)', 'Longer timeline to first close', 'Ongoing compliance across two jurisdictions']
+  },
+  SPV_DEAL: {
+    name: 'Deal-by-Deal SPV',
+    short: 'SPV Co-Invest',
+    regulator: 'IFSCA or FSC (depending on jurisdiction)',
+    jurisdiction: 'GIFT City or Mauritius',
+    currency: 'USD',
+    timeline: '2–6 weeks per deal',
+    minCorpus: 'USD 3M+ recommended',
+    tax: 'Per jurisdiction; GIFT City benefits apply',
+    color: '#c4a35a',
+    pros: ['No fund-level commitment required from LPs — deal-by-deal participation', 'Faster to set up than a full registered fund', 'LPs only commit when they see the specific deal', 'Ideal for testing LP appetite before launching a full fund', 'Altus Bridge co-invest model: deal lead earns carry per deal'],
+    cons: ['Higher per-deal cost as % of deal size vs. fund', 'No carry accumulation across portfolio — each deal standalone', 'LP onboarding KYC needed per SPV unless umbrella structure used']
+  }
+};
+
+function getRecommendation(answers) {
+  const { investors, asset, ticket, currency, timeline } = answers;
+
+  // SCORING LOGIC
+  let scores = {
+    SEBI_AIF: 0,
+    GIFT_FME: 0,
+    MAURITIUS_GBL: 0,
+    DIFC_QIF: 0,
+    MASTER_FEEDER: 0,
+    SPV_DEAL: 0
+  };
+
+  // Investor geography scoring
+  if (investors === 'india') { scores.SEBI_AIF += 40; scores.GIFT_FME += 15; }
+  if (investors === 'gcc') { scores.DIFC_QIF += 40; scores.GIFT_FME += 20; scores.MAURITIUS_GBL += 10; }
+  if (investors === 'singapore') { scores.MAURITIUS_GBL += 35; scores.GIFT_FME += 20; }
+  if (investors === 'africa') { scores.MAURITIUS_GBL += 40; scores.GIFT_FME += 10; }
+  if (investors === 'mixed') { scores.MASTER_FEEDER += 45; scores.MAURITIUS_GBL += 20; }
+
+  // Asset class scoring
+  if (asset === 'private_credit') { scores.SEBI_AIF += 20; scores.GIFT_FME += 15; scores.MAURITIUS_GBL += 10; }
+  if (asset === 'infrastructure') { scores.GIFT_FME += 20; scores.SEBI_AIF += 15; scores.MAURITIUS_GBL += 15; }
+  if (asset === 'real_estate') { scores.SEBI_AIF += 20; scores.MAURITIUS_GBL += 15; }
+  if (asset === 'growth_equity') { scores.SEBI_AIF += 15; scores.GIFT_FME += 15; scores.SPV_DEAL += 10; }
+  if (asset === 'alternatives') { scores.MAURITIUS_GBL += 20; scores.DIFC_QIF += 20; scores.SPV_DEAL += 15; }
+
+  // Ticket size scoring
+  if (ticket === 'small') { scores.SPV_DEAL += 25; scores.SEBI_AIF += 10; }
+  if (ticket === 'mid') { scores.SEBI_AIF += 15; scores.GIFT_FME += 15; scores.MAURITIUS_GBL += 10; }
+  if (ticket === 'large') { scores.MASTER_FEEDER += 20; scores.GIFT_FME += 15; scores.MAURITIUS_GBL += 10; }
+  if (ticket === 'xlarge') { scores.MASTER_FEEDER += 25; scores.GIFT_FME += 10; }
+
+  // Currency scoring
+  if (currency === 'inr') { scores.SEBI_AIF += 30; }
+  if (currency === 'usd') { scores.GIFT_FME += 25; scores.MAURITIUS_GBL += 20; scores.DIFC_QIF += 15; }
+  if (currency === 'both') { scores.MASTER_FEEDER += 35; scores.GIFT_FME += 15; }
+
+  // Timeline scoring
+  if (timeline === 'urgent') { scores.DIFC_QIF += 25; scores.SPV_DEAL += 20; }
+  if (timeline === 'normal') { scores.SEBI_AIF += 10; scores.GIFT_FME += 15; scores.MAURITIUS_GBL += 10; }
+  if (timeline === 'relaxed') { scores.MASTER_FEEDER += 10; scores.SEBI_AIF += 10; }
+  if (timeline === 'flexible') { scores.MASTER_FEEDER += 10; scores.SEBI_AIF += 10; scores.MAURITIUS_GBL += 10; }
+
+  // Sort by score
+  const ranked = Object.entries(scores)
+    .sort((a,b) => b[1]-a[1])
+    .filter(([,v]) => v > 0);
+
+  return {
+    primary: ranked[0][0],
+    secondary: ranked[1][0],
+    scores: scores
+  };
+}
+
+// STATE
+let currentQ = 0;
+let answers = {};
+
+function renderProgress() {
+  const steps = document.getElementById('progress-steps');
+  const text = document.getElementById('progress-text');
+  steps.innerHTML = QUESTIONS.map((q, i) => {
+    const pct = i < currentQ ? 100 : i === currentQ ? 0 : 0;
+    const done = i < currentQ;
+    return `<div class="prog-step"><div class="prog-step-fill" style="width:${done?100:0}%;background:${done?'var(--gold)':'var(--gold)'}"></div></div>`;
+  }).join('');
+  if (currentQ < QUESTIONS.length) {
+    text.textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  } else {
+    text.textContent = 'Complete — your recommendation is ready';
+  }
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  const selected = answers[q.id];
+
+  const html = `
+    <div class="question-card">
+      <p class="q-num">${q.num}</p>
+      <h2 class="q-text">${q.text}</h2>
+      <p class="q-hint">${q.hint}</p>
+      <div class="options" id="options-${q.id}">
+        ${q.options.map(o => `
+          <button class="option${selected===o.value?' selected':''}" onclick="selectOption('${q.id}','${o.value}')">
+            <div class="option-radio"></div>
+            <div class="option-content">
+              <p class="option-label">${o.label}</p>
+              <p class="option-detail">${o.detail}</p>
+            </div>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="prevQ()" ${currentQ===0?'disabled':''}>← Previous</button>
+      <button class="btn-next" id="next-btn" onclick="nextQ()" ${!selected?'disabled':''}>
+        ${currentQ===QUESTIONS.length-1?'See my recommendation →':'Next question →'}
+      </button>
+    </div>
+  `;
+
+  document.getElementById('tool-body').innerHTML = html;
+}
+
+function renderResult() {
+  const rec = getRecommendation(answers);
+  const primary = STRUCTURES[rec.primary];
+  const secondary = STRUCTURES[rec.secondary];
+  const maxScore = Math.max(...Object.values(rec.scores));
+
+  const scoreRows = Object.entries(rec.scores)
+    .sort((a,b) => b[1]-a[1])
+    .slice(0,4)
+    .map(([key, val]) => {
+      const s = STRUCTURES[key];
+      const pct = Math.round((val / maxScore) * 100);
+      const barColor = key === rec.primary ? 'var(--gold)' : 'rgba(255,255,255,.2)';
+      return `<div class="score-row">
+        <span class="score-name">${s.short}</span>
+        <div class="score-bar-track"><div class="score-bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+        <span class="score-pct">${pct}%</span>
+      </div>`;
+    }).join('');
+
+  const html = `
+    <div class="result-wrap">
+      <p class="result-badge">Recommended structure</p>
+      <h2 class="result-title">${primary.name}</h2>
+      <p class="result-subtitle">Based on your investor geography, asset class, and timeline, ${primary.name} is the strongest structural fit. ${secondary.name} is your best alternative.</p>
+
+      <div class="result-grid">
+        <div class="result-box">
+          <p class="result-box-label">Structure at a glance</p>
+          <div class="result-box-content">
+            <strong>Regulator:</strong> ${primary.regulator}<br>
+            <strong>Jurisdiction:</strong> ${primary.jurisdiction}<br>
+            <strong>Currency:</strong> ${primary.currency}<br>
+            <strong>Min corpus:</strong> ${primary.minCorpus}<br>
+            <strong>Setup timeline:</strong> ${primary.timeline}<br>
+            <strong>Tax treatment:</strong> ${primary.tax}
+          </div>
+        </div>
+        <div class="result-box">
+          <p class="result-box-label">Key advantages</p>
+          <ul class="result-box-list">
+            ${primary.pros.slice(0,4).map(p => `<li>${p}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="result-box">
+          <p class="result-box-label">Watch points</p>
+          <ul class="result-box-list">
+            ${primary.cons.map(c => `<li>${c}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="result-box">
+          <p class="result-box-label">Fit analysis</p>
+          <div class="score-label-row" style="margin-bottom:.75rem;color:rgba(255,255,255,.6)">Match score vs alternatives</div>
+          ${scoreRows}
+        </div>
+      </div>
+
+      <div class="secondary-rec">
+        <p class="secondary-label">Alternative consideration</p>
+        <p class="secondary-title">${secondary.name}</p>
+        <p class="secondary-desc">${secondary.regulator} · ${secondary.jurisdiction} · ${secondary.currency} · ${secondary.timeline} setup timeline. Consider if your LP mix shifts or if you need a feeder alongside the primary structure.</p>
+      </div>
+
+      <div class="result-ctas">
+        <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="cta-primary">Discuss this structure →</a>
+        <a href="aif-fee-calculator.html" class="cta-secondary">Estimate setup costs →</a>
+      </div>
+
+      <button class="restart-btn" onclick="restartTool()">↺ Start again with different answers</button>
+
+      <div class="tool-disclaimer">
+        <p>This tool provides indicative guidance based on general criteria and is not a substitute for qualified legal and regulatory advice. Fund structure selection depends on many factors specific to your transaction, investor base, and regulatory environment. Always obtain formal advice from a registered investment adviser and legal counsel before proceeding. Altus Bridge acts as an independent advisory intermediary.</p>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('tool-body').innerHTML = html;
+
+  // Animate score bars after render
+  setTimeout(() => {
+    document.querySelectorAll('.score-bar-fill').forEach(el => {
+      el.style.transition = 'width .8s ease';
+    });
+  }, 100);
+}
+
+function selectOption(qId, value) {
+  answers[qId] = value;
+  const q = QUESTIONS[currentQ];
+  document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const nextBtn = document.getElementById('next-btn');
+  if (nextBtn) nextBtn.disabled = false;
+}
+
+function nextQ() {
+  const q = QUESTIONS[currentQ];
+  if (!answers[q.id]) return;
+  currentQ++;
+  if (currentQ >= QUESTIONS.length) {
+    renderProgress();
+    renderResult();
+  } else {
+    renderProgress();
+    renderQuestion();
+  }
+}
+
+function prevQ() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderProgress();
+    renderQuestion();
+  }
+}
+
+function restartTool() {
+  currentQ = 0;
+  answers = {};
+  renderProgress();
+  renderQuestion();
+}
+
+// INIT
+renderProgress();
+renderQuestion();
+</script>
+</body>
+</html>

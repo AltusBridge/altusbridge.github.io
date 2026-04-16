@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Mandates | Altus Bridge</title>
+<meta name="description" content="Active fundraising and placement mandates at Altus Bridge — private credit, real estate AIF, solar pre-IPO, Scotch whisky fund, and luxury asset co-investment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#14120d;--ink-mid:#46433c;--ink-muted:#8a8680;--ink-faint:#b6b2ac;
+  --surface:#faf9f6;--surface-2:#f3f1ec;--surface-3:#eae7e0;
+  --border:#e2ddd6;--border-light:#ece9e3;
+  --gold:#c4a35a;--gold-dark:#9a7a38;--gold-bg:#fdf8ee;
+  --dark:#16140f;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--surface);color:var(--ink);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,246,.96);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.05em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{display:inline-flex;align-items:center;padding:9px 22px;background:var(--dark);color:var(--surface);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;border-radius:2px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.page-hero{background:var(--dark);padding:8rem 3rem 5rem}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
+.page-label::before{content:"";display:inline-block;width:28px;height:.5px;background:var(--gold)}
+.page-title{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:400;line-height:1.06;letter-spacing:-.02em;color:#fff;margin-bottom:1.25rem}
+.page-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.5);max-width:580px;line-height:1.75;margin-bottom:2.5rem}
+.status-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:5px 14px;border-radius:999px;border:.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+.status-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* GATE NOTICE BANNER */
+.gate-notice{background:var(--gold-bg);border:.5px solid rgba(196,163,90,.35);border-radius:4px;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.gate-notice-text{font-size:13px;font-weight:400;color:var(--gold-dark);line-height:1.5}
+.gate-notice-text strong{font-weight:500}
+.gate-notice-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:var(--gold-dark);color:#fff;font-size:11px;font-weight:500;letter-spacing:.06em;border:none;border-radius:2px;cursor:pointer;white-space:nowrap;transition:opacity .2s;font-family:var(--sans)}
+.gate-notice-cta:hover{opacity:.85}
+
+/* PAGE BODY */
+.page-body{max-width:1100px;margin:0 auto;padding:4rem 3rem 6rem}
+
+/* MANDATE CARDS */
+.mandate{border:.5px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem;background:var(--surface);position:relative}
+.mandate-header{padding:2rem 2.5rem 1.5rem;border-bottom:.5px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;background:var(--surface-2)}
+.mandate-header-left{}
+.mandate-status-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.mandate-status-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.mandate-name{font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:400;color:var(--ink);line-height:1.2;margin-bottom:.5rem}
+.mandate-tagline{font-size:14px;font-weight:300;color:var(--ink-muted)}
+.mandate-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem}
+.mtag{font-size:10px;font-weight:500;padding:3px 10px;border-radius:999px;border:.5px solid var(--border);color:var(--ink-muted);background:var(--surface)}
+.mandate-key-stats{display:flex;flex-direction:column;gap:.5rem;min-width:180px;text-align:right}
+.stat-item{font-size:12px;color:var(--ink-muted);font-weight:300}
+.stat-item strong{display:block;font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);line-height:1}
+.mandate-body{padding:2rem 2.5rem}
+.mandate-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.mandate-col h4{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.mandate-list{list-style:none;padding:0;margin:0}
+.mandate-list li{font-size:13px;font-weight:300;color:var(--ink-mid);padding:7px 0 7px 18px;border-bottom:.5px solid var(--border-light);position:relative;line-height:1.55}
+.mandate-list li:last-child{border-bottom:none}
+.mandate-list li::before{content:"";position:absolute;left:0;top:14px;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.mandate-list li strong{font-weight:500;color:var(--ink)}
+.mandate-footer{padding:1.5rem 2.5rem;border-top:.5px solid var(--border);background:var(--gold-bg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.mandate-footer-note{font-size:12px;color:var(--gold-dark);font-weight:400}
+.mandate-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;background:var(--dark);color:var(--surface);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:2px;transition:opacity .2s}
+.mandate-cta:hover{opacity:.85}
+
+/* ─── GATE LAYER ─── */
+/* First mandate: visible always (teaser) */
+.mandate-unlocked .gate-layer{display:none}
+
+/* Gated mandates: blur + overlay */
+.mandate-gated{position:relative}
+.mandate-gated .gate-layer{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.25rem;
+  background:linear-gradient(to bottom,rgba(250,249,246,.15) 0%,rgba(250,249,246,.75) 35%,rgba(250,249,246,.97) 100%);
+  padding:2rem;
+  text-align:center;
+}
+.mandate-gated .gate-layer.hidden{display:none}
+.mandate-gated .gate-blur{
+  filter:blur(6px);
+  opacity:.55;
+  pointer-events:none;
+  user-select:none
+}
+.gate-lock-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--surface-2);
+  border:.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  flex-shrink:0
+}
+.gate-message{
+  font-size:13px;font-weight:400;color:var(--ink-mid);
+  max-width:340px;line-height:1.6
+}
+.gate-message strong{color:var(--ink);font-weight:500}
+.gate-unlock-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 28px;
+  background:var(--dark);color:var(--surface);
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:.06em;border:none;border-radius:2px;
+  cursor:pointer;transition:opacity .2s;
+  opacity:0;animation:btnReveal .4s ease forwards;animation-delay:2s
+}
+.gate-unlock-btn:hover{opacity:.85}
+@keyframes btnReveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Partial preview strip on gated cards */
+.mandate-gated .mandate-header{position:relative;z-index:1}
+
+/* DISCLAIMER */
+.disclaimer{background:var(--surface-2);border:.5px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin-top:3rem}
+.disclaimer p{font-size:12px;color:var(--ink-muted);line-height:1.65}
+
+/* ─── MODAL ─── */
+#gate-modal{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(20,18,13,.88);
+  backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:1.5rem
+}
+#gate-modal.open{display:flex}
+.modal-box{
+  background:var(--surface);
+  max-width:460px;width:100%;
+  border-radius:6px;
+  border:.5px solid var(--border);
+  overflow:hidden;
+  position:relative;
+  animation:modalIn .25s ease both
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.modal-header{
+  background:var(--dark);
+  padding:2rem 2.5rem 1.75rem;
+  border-bottom:.5px solid rgba(255,255,255,.07)
+}
+.modal-eyebrow{
+  font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.75rem;
+  display:flex;align-items:center;gap:8px
+}
+.modal-eyebrow::before{content:"";display:inline-block;width:16px;height:.5px;background:var(--gold)}
+.modal-title{
+  font-family:var(--serif);font-size:26px;font-weight:400;
+  color:#fff;line-height:1.2;margin-bottom:.4rem
+}
+.modal-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.6}
+.modal-body{padding:2rem 2.5rem}
+.modal-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:none;
+  color:rgba(255,255,255,.5);font-size:16px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s
+}
+.modal-close:hover{background:rgba(255,255,255,.15)}
+
+/* FORM FIELDS */
+.field-group{margin-bottom:1.25rem}
+.field-group label{
+  display:block;font-size:10px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-muted);margin-bottom:5px
+}
+.field-group input,.field-group select{
+  width:100%;height:42px;padding:0 12px;
+  border:.5px solid var(--border);border-radius:3px;
+  background:var(--surface);color:var(--ink);
+  font-family:var(--sans);font-size:13px;outline:none;
+  transition:border-color .2s;-moz-appearance:textfield
+}
+.field-group input::placeholder{color:var(--ink-faint)}
+.field-group input:focus,.field-group select:focus{border-color:var(--gold)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+.modal-access-list{
+  display:flex;flex-direction:column;gap:.4rem;
+  margin-bottom:1.5rem;padding:.75rem 1rem;
+  background:var(--gold-bg);border:.5px solid rgba(196,163,90,.25);
+  border-radius:3px
+}
+.modal-access-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:300;color:var(--gold-dark)
+}
+.modal-access-item::before{content:"✓";font-weight:500;font-size:11px;color:var(--gold)}
+
+.submit-btn{
+  width:100%;height:44px;
+  background:var(--dark);color:var(--surface);
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  letter-spacing:.06em;border:none;border-radius:2px;
+  cursor:pointer;transition:opacity .2s;margin-top:.25rem
+}
+.submit-btn:hover{opacity:.85}
+.modal-privacy{font-size:10px;color:var(--ink-faint);text-align:center;margin-top:.75rem;line-height:1.55}
+
+/* SUCCESS STATE */
+.modal-success{display:none;padding:2.5rem;text-align:center}
+.success-icon{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--gold-bg);border:.5px solid rgba(196,163,90,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin:0 auto 1.5rem
+}
+.success-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:.5rem}
+.success-sub{font-size:13px;font-weight:300;color:var(--ink-muted);line-height:1.65;margin-bottom:1.5rem}
+.success-close{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 24px;background:var(--dark);color:var(--surface);
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:.04em;border:none;border-radius:2px;cursor:pointer
+}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--serif);font-size:16px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.04em;text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:11px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.5)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .page-hero{padding:6rem 1.5rem 3rem}
+  .page-body{padding:3rem 1.5rem 4rem}
+  .mandate-header{flex-direction:column;gap:1rem}
+  .mandate-key-stats{text-align:left}
+  .mandate-grid{grid-template-columns:1fr}
+  .mandate-body{padding:1.5rem}
+  .mandate-header{padding:1.5rem}
+  .field-row{grid-template-columns:1fr}
+  .modal-body{padding:1.5rem}
+  .modal-header{padding:1.5rem}
+  footer{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Altus<span>Bridge</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="mandates.html" class="active">Mandates</a></li>
+    <li><a href="india-ecb-liberalisation-2026.html">Insights</a></li>
+    <li><a href="index.html#cta">Contact</a></li>
+  </ul>
+  <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="nav-cta">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Altus Bridge &middot; Active Pipeline</p>
+    <h1 class="page-title">Live Mandates</h1>
+    <p class="page-sub">Selected active mandates where Altus Bridge is placing capital, advising on fundraising, or co-originating deals. For qualified investors and advisors with relevant opportunities.</p>
+    <div class="status-row">
+      <span class="status-pill"><span class="dot"></span>5 Active Mandates</span>
+      <span class="status-pill"><span class="dot"></span>Private Credit &middot; Real Assets &middot; Alternatives</span>
+      <span class="status-pill"><span class="dot"></span>India &middot; UK &middot; Global</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- GATE NOTICE -->
+  <div class="gate-notice" id="gate-notice">
+    <p class="gate-notice-text"><strong>Mandate details are available to registered LPs and qualified investors.</strong> The first mandate is visible as a representative example. Register once to unlock all five.</p>
+    <button class="gate-notice-cta" onclick="openModal('banner')">Register for access &rarr;</button>
+  </div>
+
+  <!-- ─── MANDATE 1: DIAGEO FCN — UNLOCKED (teaser) ─── -->
+  <div class="mandate mandate-unlocked">
+    <div class="mandate-header">
+      <div class="mandate-header-left">
+        <p class="mandate-status-badge">Placement Open</p>
+        <h2 class="mandate-name">Diageo PLC Fixed Coupon Note</h2>
+        <p class="mandate-tagline">Structured fixed income product on Diageo PLC underlying &mdash; DFSA-regulated placement via Bequest Capital</p>
+        <div class="mandate-tags"><span class="mtag">Fixed Income</span><span class="mtag">Structured Product</span><span class="mtag">DFSA Regulated</span><span class="mtag">HNI / Family Office</span></div>
+      </div>
+      <div class="mandate-key-stats">
+        <div class="stat-item"><strong>FCN</strong>Fixed Coupon Note</div>
+        <div class="stat-item"><strong>Diageo PLC</strong>Underlying</div>
+        <div class="stat-item"><strong>DFSA</strong>Regulated placement</div>
+      </div>
+    </div>
+    <div class="mandate-body">
+      <div class="mandate-grid">
+        <div>
+          <h4>Deal overview</h4>
+          <ul class="mandate-list">
+            <li><strong>Product type:</strong> Fixed Coupon Note (FCN) on Diageo PLC shares</li>
+            <li><strong>Placement agent:</strong> Bequest Capital &mdash; DFSA-regulated multi-family office, Dubai</li>
+            <li><strong>Altus Bridge role:</strong> Co-placement of remaining allocation to HNI and family office network</li>
+            <li><strong>Underlying:</strong> Diageo PLC &mdash; globally recognized premium spirits company (Johnnie Walker, Guinness, Tanqueray)</li>
+            <li><strong>Coupon structure:</strong> Fixed coupon above bank deposit rates, capital protected within defined barriers</li>
+            <li><strong>Suitable for:</strong> Yield-seeking HNIs and family offices with USD liquidity looking for defined-return fixed income alternatives</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Why Diageo</h4>
+          <ul class="mandate-list">
+            <li>FTSE 100 company, globally diversified premium spirits portfolio across 180 markets</li>
+            <li>Resilient business model &mdash; premium spirits category demonstrates pricing power through economic cycles</li>
+            <li>India exposure &mdash; significant growth market with FTA-driven duty reduction tailwind</li>
+            <li>FCN structure provides defined return profile with equity-linked upside protection</li>
+            <li>Anchor investor already committed via Bequest Capital &mdash; Altus Bridge placing remainder</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mandate-footer">
+      <p class="mandate-footer-note">Suitable for qualified investors. Full product documentation available on request.</p>
+      <a href="https://wa.me/919930136884" target="_blank" class="mandate-cta">Express interest &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ─── MANDATE 2: ONTERRA — GATED ─── -->
+  <div class="mandate mandate-gated" id="mandate-2">
+    <div class="mandate-header">
+      <div class="mandate-header-left">
+        <p class="mandate-status-badge">Fundraising Active</p>
+        <h2 class="mandate-name">Onterra Capital &mdash; Real Estate Credit AIF</h2>
+        <p class="mandate-tagline">SEBI Category II AIF targeting secured real estate credit in MMR and Bangalore growth corridors</p>
+        <div class="mandate-tags"><span class="mtag">SEBI AIF Cat II</span><span class="mtag">Real Estate Credit</span><span class="mtag">Secured Debt</span><span class="mtag">18&ndash;20% IRR</span><span class="mtag">MMR &amp; Bangalore</span></div>
+      </div>
+      <div class="mandate-key-stats">
+        <div class="stat-item"><strong>&#8377;300 Cr</strong>Base target corpus</div>
+        <div class="stat-item"><strong>&#8377;300 Cr</strong>Greenshoe option</div>
+        <div class="stat-item"><strong>18&ndash;20%</strong>Target IRR</div>
+      </div>
+    </div>
+    <div class="mandate-body gate-blur">
+      <div class="mandate-grid">
+        <div>
+          <h4>Fund overview</h4>
+          <ul class="mandate-list">
+            <li><strong>Fund manager:</strong> Onterra Capital &mdash; led by Amar Merani</li>
+            <li><strong>Strategy:</strong> Secured real estate credit to Tier 2/3 developers (by scale) in high-growth residential corridors</li>
+            <li><strong>Geographies:</strong> Mumbai Metropolitan Region (MMR) growth corridors &amp; Bangalore peripheral zones</li>
+            <li><strong>Instrument:</strong> Senior secured debt to real estate developers with hard asset collateral</li>
+            <li><strong>Fund structure:</strong> SEBI Category II AIF &mdash; close-ended, pass-through tax treatment</li>
+            <li><strong>Minimum LP ticket:</strong> &#8377;1 crore per SEBI AIF regulations</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Investment thesis</h4>
+          <ul class="mandate-list">
+            <li>Residential demand in MMR and Bangalore growth corridors remains structurally robust &mdash; backed by employment and infrastructure investment</li>
+            <li>Tier 2/3 developers by brand/scale face capital constraints from traditional lenders &mdash; creating premium pricing for private credit</li>
+            <li>Hard asset security (land + construction) provides downside protection at 18&ndash;20% IRR entry</li>
+            <li>Fund manager has established developer relationships and local underwriting capability</li>
+            <li>Altus Bridge role: fundraising advisory, LP targeting, and investor documentation support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mandate-footer gate-blur">
+      <p class="mandate-footer-note">For qualified HNIs, family offices, and institutional investors. Fund documents available under NDA.</p>
+      <a href="#" class="mandate-cta">Request fund documents &rarr;</a>
+    </div>
+    <!-- GATE OVERLAY -->
+    <div class="gate-layer" id="gate-2">
+      <div class="gate-lock-icon">🔒</div>
+      <p class="gate-message"><strong>Register to unlock mandate details.</strong> Full fund structure, investment thesis, and documentation available to registered LPs.</p>
+      <button class="gate-unlock-btn" onclick="openModal('mandate-2')">Unlock all mandates &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ─── MANDATE 3: SOLEOS — GATED ─── -->
+  <div class="mandate mandate-gated" id="mandate-3">
+    <div class="mandate-header">
+      <div class="mandate-header-left">
+        <p class="mandate-status-badge">Pre-IPO Fundraise</p>
+        <h2 class="mandate-name">Soleos Energy &mdash; Solar EPC &amp; Developer</h2>
+        <p class="mandate-tagline">Gujarat-based solar EPC company and developer on the path to Main Board IPO &mdash; pre-IPO institutional fundraise</p>
+        <div class="mandate-tags"><span class="mtag">Solar Energy</span><span class="mtag">EPC</span><span class="mtag">Pre-IPO</span><span class="mtag">Gujarat</span><span class="mtag">654 MW Order Book</span></div>
+      </div>
+      <div class="mandate-key-stats">
+        <div class="stat-item"><strong>654 MW</strong>Active order book</div>
+        <div class="stat-item"><strong>Main Board</strong>IPO target</div>
+        <div class="stat-item"><strong>Gujarat</strong>Domicile</div>
+      </div>
+    </div>
+    <div class="mandate-body gate-blur">
+      <div class="mandate-grid">
+        <div>
+          <h4>Company overview</h4>
+          <ul class="mandate-list">
+            <li><strong>Business:</strong> Solar EPC contractor and developer with a proprietary TPSAT&trade; installation technology</li>
+            <li><strong>Order book:</strong> 654 MW active pipeline across government and private sector projects</li>
+            <li><strong>IPO track:</strong> Company is progressing toward a BSE/NSE Main Board listing</li>
+            <li><strong>Geography:</strong> Gujarat-based, with national project execution capability</li>
+            <li><strong>Promoter:</strong> Founder-led, with established relationships across Gujarat&#8217;s solar infrastructure ecosystem</li>
+            <li><strong>Altus Bridge role:</strong> Deal origination and LP targeting for pre-IPO fundraise round</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Investment case</h4>
+          <ul class="mandate-list">
+            <li>India&#8217;s solar EPC market benefits from structural tailwind &mdash; 500 GW renewable target by 2030 requires sustained capital and execution capacity</li>
+            <li>654 MW order book provides near-term revenue visibility ahead of IPO</li>
+            <li>Pre-IPO entry at a discount to expected listing price &mdash; liquidity event at Main Board IPO</li>
+            <li>TPSAT&trade; technology positions company as differentiated EPC provider vs. commodity contractors</li>
+            <li>Strong Gujarat government pipeline and Central government tenders provide order book visibility</li>
+            <li>Suited to investors seeking pre-IPO equity exposure in India&#8217;s renewable energy sector</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mandate-footer gate-blur">
+      <p class="mandate-footer-note">Pre-IPO investment. For qualified investors only. Company profile and financials available on request.</p>
+      <a href="#" class="mandate-cta">Request company profile &rarr;</a>
+    </div>
+    <div class="gate-layer" id="gate-3">
+      <div class="gate-lock-icon">🔒</div>
+      <p class="gate-message"><strong>Register to unlock mandate details.</strong> Company overview, order book detail, and financials available to registered investors.</p>
+      <button class="gate-unlock-btn" onclick="openModal('mandate-3')">Unlock all mandates &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ─── MANDATE 4: CALEDONIAN MALT FUND — GATED ─── -->
+  <div class="mandate mandate-gated" id="mandate-4">
+    <div class="mandate-header">
+      <div class="mandate-header-left">
+        <p class="mandate-status-badge">First Close in Progress</p>
+        <h2 class="mandate-name">The Caledonian Malt Fund L.P.</h2>
+        <p class="mandate-tagline">BMA-regulated alternative investment fund investing in premium Scotch whisky casks &mdash; Scotch whisky as an institutional asset class</p>
+        <div class="mandate-tags"><span class="mtag">Alternative Assets</span><span class="mtag">Scotch Whisky</span><span class="mtag">BMA Regulated</span><span class="mtag">Bermuda</span><span class="mtag">Non-Correlated</span><span class="mtag">UK CGT Exempt</span></div>
+      </div>
+      <div class="mandate-key-stats">
+        <div class="stat-item"><strong>&pound;30M</strong>Fund target size</div>
+        <div class="stat-item"><strong>&pound;250K</strong>Minimum investment</div>
+        <div class="stat-item"><strong>8 years</strong>Fund term</div>
+      </div>
+    </div>
+    <div class="mandate-body gate-blur">
+      <div class="mandate-grid">
+        <div>
+          <h4>Fund overview</h4>
+          <ul class="mandate-list">
+            <li><strong>Fund structure:</strong> Professional Closed Fund &mdash; LP/GP structure registered with Bermuda Monetary Authority (BMA)</li>
+            <li><strong>Investment mandate:</strong> Diversified portfolio of premium, investment-grade Scotch whisky casks sourced from Scotland&#8217;s most reputable distilleries &mdash; Macallan, Dalmore, Lagavulin, Bowmore, Glenlivet, Ardbeg, Springbank</li>
+            <li><strong>Custody:</strong> Campbeltown Bond &mdash; HMRC-licensed bonded warehouse, Scotland</li>
+            <li><strong>Administrator:</strong> Renesis, Mauritius &middot; Bank: Mauritius Commercial Bank</li>
+            <li><strong>Legal:</strong> Walkers (Bermuda) &middot; Auditor: Nexia Baker Arenson</li>
+            <li><strong>Fund manager:</strong> Amit Tripathy, GP &amp; Fund Manager</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Investment case</h4>
+          <ul class="mandate-list">
+            <li><strong>Non-correlated returns:</strong> Scotch whisky cask values are not tethered to equity or fixed income markets &mdash; portfolio diversification benefit</li>
+            <li><strong>UK CGT exempt:</strong> Direct cask investment is exempt from UK capital gains tax; casks in HMRC bonded warehouses not subject to duty</li>
+            <li><strong>Supply constrained:</strong> Premium aged Scotch cannot be manufactured on demand &mdash; maturation is multi-year; supply is structurally limited</li>
+            <li><strong>India FTA tailwind:</strong> India&ndash;UK FTA reduces Scotch whisky tariffs from 150% to 75% &mdash; opens a large incremental demand market</li>
+            <li><strong>Market timing:</strong> Current price dislocation driven by short-term uncertainty &mdash; historically attractive entry point for long-term investors</li>
+            <li><strong>Knight Frank Luxury Index:</strong> 280% returns over 10 years for a broad range of rare whisky bottles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mandate-footer gate-blur">
+      <p class="mandate-footer-note">For professional and qualified investors only. Min. commitment &pound;250,000. Fund advancing toward first close.</p>
+      <a href="#" class="mandate-cta">Request fund teaser &rarr;</a>
+    </div>
+    <div class="gate-layer" id="gate-4">
+      <div class="gate-lock-icon">🔒</div>
+      <p class="gate-message"><strong>Register to unlock mandate details.</strong> Fund structure, investment case, and teaser document available to registered investors.</p>
+      <button class="gate-unlock-btn" onclick="openModal('mandate-4')">Unlock all mandates &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ─── MANDATE 5: PROJECT AMAXI — GATED ─── -->
+  <div class="mandate mandate-gated" id="mandate-5">
+    <div class="mandate-header">
+      <div class="mandate-header-left">
+        <p class="mandate-status-badge">Consortium Participation</p>
+        <h2 class="mandate-name">Project Amaxi &mdash; Ultra-Luxury Hypercar Platform</h2>
+        <p class="mandate-tagline">Secondary investment in a globally iconic, supply-constrained hypercar manufacturer alongside majority shareholder and institutional partner</p>
+        <div class="mandate-tags"><span class="mtag">Private Equity</span><span class="mtag">Luxury Assets</span><span class="mtag">Secondary</span><span class="mtag">25&ndash;35% IRR</span><span class="mtag">3&ndash;4x MOIC</span><span class="mtag">IPO Exit Path</span></div>
+      </div>
+      <div class="mandate-key-stats">
+        <div class="stat-item"><strong>&euro;50M</strong>Consortium participation</div>
+        <div class="stat-item"><strong>25&ndash;35%</strong>Target IRR</div>
+        <div class="stat-item"><strong>3&ndash;4x</strong>Target MOIC</div>
+      </div>
+    </div>
+    <div class="mandate-body gate-blur">
+      <div class="mandate-grid">
+        <div>
+          <h4>Transaction overview</h4>
+          <ul class="mandate-list">
+            <li><strong>Target:</strong> Globally recognized ultra-luxury hypercar manufacturer &mdash; structurally limited production with multi-year order visibility</li>
+            <li><strong>Transaction:</strong> Secondary investment of ~&euro;1bn alongside majority shareholder and institutional partner with AUM over USD 7B</li>
+            <li><strong>Consortium size:</strong> ~&euro;50M being placed as part of the co-investment consortium</li>
+            <li><strong>Valuation:</strong> Entry at ~9x 2025 EBITDA &mdash; attractive relative to peers (Ferrari trades at 18&ndash;22x)</li>
+            <li><strong>Exposure:</strong> ~93% to core hypercar business &middot; ~7% to high-growth adjacent automotive technology segment</li>
+            <li><strong>Exit horizon:</strong> ~4 years &mdash; IPO or strategic monetization pathway</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Investment rationale</h4>
+          <ul class="mandate-list">
+            <li><strong>Supply-constrained luxury:</strong> Demand significantly exceeds supply; high proportion of repeat customers and collectors; limited direct global peers in brand, engineering, and exclusivity</li>
+            <li><strong>De-risked revenue model:</strong> ~20% upfront + ~30% during customization (non-refundable) + ~50% at delivery &mdash; material cost received in advance</li>
+            <li><strong>2025 financials:</strong> Net Revenue ~&euro;643M &middot; 53% Gross Margin &middot; EBITDA ~&euro;194M @ 30.2% margin</li>
+            <li><strong>2030 projection:</strong> Net Revenue ~&euro;854M &middot; 70% Gross Margin &middot; EBITDA ~&euro;453M @ 53% margin</li>
+            <li><strong>2026 inflection:</strong> Completion of heavy R&amp;D investment cycle &middot; Launch of next-generation models including hybrid platform</li>
+            <li><strong>Return base case:</strong> 3&ndash;4x MOIC &middot; 25&ndash;35% IRR over ~4-year horizon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mandate-footer gate-blur">
+      <p class="mandate-footer-note">Draft &mdash; for discussion purposes only. For qualified institutional and UHNW investors. Full IM available to pre-qualified investors.</p>
+      <a href="#" class="mandate-cta">Request IM access &rarr;</a>
+    </div>
+    <div class="gate-layer" id="gate-5">
+      <div class="gate-lock-icon">🔒</div>
+      <p class="gate-message"><strong>Register to unlock mandate details.</strong> Full transaction overview, financials, and IM access for qualified institutional and UHNW investors.</p>
+      <button class="gate-unlock-btn" onclick="openModal('mandate-5')">Unlock all mandates &rarr;</button>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Important disclaimer:</strong> This page presents a summary of active mandates for informational purposes only and does not constitute an offer to sell or solicitation to purchase any security or investment product. All investments are subject to risk including possible loss of principal. Investments described are available to qualified, professional, and sophisticated investors only as defined by applicable regulations in each jurisdiction. Past performance is not indicative of future results. Detailed offering documents, risk factors, and suitability assessments are available on request and must be reviewed before making any investment decision. Altus Bridge acts as an independent advisory intermediary and does not hold client funds or act as a regulated investment manager.</p>
+  </div>
+
+</div><!-- end page-body -->
+
+<!-- ─── LP REGISTRATION MODAL ─── -->
+<div id="gate-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+
+    <!-- FORM STATE -->
+    <div id="modal-form-state">
+      <div class="modal-header">
+        <p class="modal-eyebrow">Mandate Data Room</p>
+        <h2 class="modal-title" id="modal-title">Register for<br>investor access</h2>
+        <p class="modal-sub">Verify your details once. All five mandates unlock immediately.</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-access-list">
+          <div class="modal-access-item">All 5 active mandates — full detail</div>
+          <div class="modal-access-item">Fund documents &amp; term sheets on request</div>
+          <div class="modal-access-item">New mandate alerts via email</div>
+        </div>
+
+        <!-- 
+          TO CONNECT FORMSPREE:
+          1. Go to formspree.io, create a free account
+          2. Create a new form — copy your endpoint URL (looks like https://formspree.io/f/xyzabc12)
+          3. Replace action="#" below with that URL
+          4. Remove the onsubmit handler and let Formspree handle submission
+          5. Add a hidden redirect field if you want a custom thank-you page
+        -->
+        <form id="lp-form" action="#" onsubmit="handleFormSubmit(event)">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-name">Full name <span style="color:var(--gold)">*</span></label>
+              <input type="text" id="f-name" name="name" required placeholder="Arjun Mehta">
+            </div>
+            <div class="field-group">
+              <label for="f-email">Work email <span style="color:var(--gold)">*</span></label>
+              <input type="email" id="f-email" name="email" required placeholder="arjun@familyoffice.com">
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="f-org">Institution / Family office <span style="color:var(--gold)">*</span></label>
+            <input type="text" id="f-org" name="organisation" required placeholder="Mehta Family Office">
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-type">Investor type <span style="color:var(--gold)">*</span></label>
+              <select id="f-type" name="investor_type" required>
+                <option value="" disabled selected>Select type</option>
+                <option>Family office</option>
+                <option>HNI / UHNI</option>
+                <option>Institutional investor</option>
+                <option>Fund of funds</option>
+                <option>M&A advisor / banker</option>
+                <option>Other qualified investor</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="f-geo">Geography</label>
+              <select id="f-geo" name="geography">
+                <option value="" disabled selected>Select region</option>
+                <option>India</option>
+                <option>GCC / UAE</option>
+                <option>Singapore / SE Asia</option>
+                <option>Africa</option>
+                <option>Europe / UK</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <!-- Hidden field to track which mandate triggered registration -->
+          <input type="hidden" id="f-source" name="source" value="mandates-page">
+          <button type="submit" class="submit-btn">Request data room access &rarr;</button>
+          <p class="modal-privacy">Details shared confidentially with Abhishek Mohta only. No marketing. No third-party sharing.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="modal-success" id="modal-success-state">
+      <div class="success-icon">✓</div>
+      <h3 class="success-title">Access request sent</h3>
+      <p class="success-sub">Abhishek will verify your details and send data room access within one business day. Check your inbox at the email you registered.</p>
+      <button class="success-close" onclick="closeModal()">Close &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Altus<span>Bridge</span></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Tools</a>
+      <a href="aif-fee-calculator.html">Fee Calculator</a>
+      <a href="gift-city-mauritius-difc.html">GIFT City Guide</a>
+      <a href="india-ecb-liberalisation-2026.html">ECB 2026</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Abhishek Mohta &middot; Altus Bridge &middot; Mumbai</span>
+  </div>
+</footer>
+
+<script>
+// ─── SESSION GATE ───
+// Uses sessionStorage so registration persists for the browser session
+// Replace with localStorage if you want it to persist across sessions
+
+const SESSION_KEY = 'altus_lp_registered';
+
+function isRegistered() {
+  return sessionStorage.getItem(SESSION_KEY) === 'true';
+}
+
+function unlockAllMandates() {
+  [2, 3, 4, 5].forEach(n => {
+    const gate = document.getElementById('gate-' + n);
+    const card = document.getElementById('mandate-' + n);
+    if (gate) gate.classList.add('hidden');
+    if (card) {
+      card.querySelectorAll('.gate-blur').forEach(el => el.classList.remove('gate-blur'));
+      // Restore WA links now that content is unlocked
+      restoreCtaLinks(n);
+    }
+  });
+  // Hide the gate notice banner
+  const notice = document.getElementById('gate-notice');
+  if (notice) notice.style.display = 'none';
+}
+
+function restoreCtaLinks(n) {
+  const ctaMap = {
+    2: { href: 'https://wa.me/919930136884', text: 'Request fund documents →' },
+    3: { href: 'https://wa.me/919930136884', text: 'Request company profile →' },
+    4: { href: 'https://wa.me/919930136884', text: 'Request fund teaser →' },
+    5: { href: 'https://wa.me/919930136884', text: 'Request IM access →' }
+  };
+  const card = document.getElementById('mandate-' + n);
+  if (!card) return;
+  const footer = card.querySelector('.mandate-footer');
+  if (!footer) return;
+  const cta = footer.querySelector('.mandate-cta');
+  if (!cta || !ctaMap[n]) return;
+  cta.href = ctaMap[n].href;
+  cta.target = '_blank';
+  cta.textContent = ctaMap[n].text;
+}
+
+// Check on page load if already registered this session
+document.addEventListener('DOMContentLoaded', () => {
+  if (isRegistered()) unlockAllMandates();
+});
+
+// ─── MODAL ───
+let triggerSource = 'mandates-page';
+
+function openModal(source) {
+  triggerSource = source || 'mandates-page';
+  document.getElementById('f-source').value = triggerSource;
+  document.getElementById('gate-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Reset to form state if previously submitted
+  document.getElementById('modal-form-state').style.display = 'block';
+  document.getElementById('modal-success-state').style.display = 'none';
+}
+
+function closeModal() {
+  document.getElementById('gate-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('gate-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ─── FORM SUBMIT ───
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const name  = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const org   = document.getElementById('f-org').value.trim();
+  const type  = document.getElementById('f-type').value;
+  const geo   = document.getElementById('f-geo').value || 'Not specified';
+
+  if (!name || !email || !org || !type) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  // ── Formspree ──
+  fetch('https://formspree.io/f/xkokjgnn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name, email, organisation: org, investor_type: type, geography: geo, source: triggerSource })
+  }).then(r => r.json()).then(data => {
+    if (data.ok) { onRegistrationSuccess(); }
+    else { alert('Something went wrong. Please email abhishek@altusbridge.in directly.'); }
+  }).catch(() => { alert('Network error. Please email abhishek@altusbridge.in directly.'); });
+}
+
+function onRegistrationSuccess() {
+  // Mark registered in session
+  sessionStorage.setItem(SESSION_KEY, 'true');
+
+  // Show success state in modal
+  document.getElementById('modal-form-state').style.display = 'none';
+  document.getElementById('modal-success-state').style.display = 'block';
+
+  // Unlock mandates immediately
+  unlockAllMandates();
+}
+</script>
+</body>
+</html>

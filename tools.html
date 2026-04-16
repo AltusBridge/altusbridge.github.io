@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Tools — Altus Bridge Capital Advisory</title>
+<meta name="description" content="Interactive tools for fund structuring, deal screening, and AIF timeline planning. Built for fund managers, family offices, and sophisticated India-linked capital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#14120d;--ink-mid:#46433c;--ink-muted:#8a8680;--ink-faint:#b6b2ac;
+  --surface:#faf9f6;--surface-2:#f3f1ec;--surface-3:#eae7e0;
+  --border:#e2ddd6;--border-light:#ece9e3;
+  --gold:#c4a35a;--gold-light:#d4b87a;--gold-dark:#9a7a38;--gold-bg:#fdf8ee;
+  --dark:#16140f;--dark-2:#1e1c16;--dark-3:#252118;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--dark);color:#fff;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* NAV */
+nav{background:rgba(22,20,15,.95);backdrop-filter:blur(16px);border-bottom:.5px solid rgba(255,255,255,.08);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;position:sticky;top:0;z-index:50}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.85);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:rgba(255,255,255,.8)}
+.nav-cta{display:inline-flex;align-items:center;padding:9px 22px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{padding:6rem 3rem 5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(196,163,90,.08) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(196,163,90,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(196,163,90,.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+.hero-inner{position:relative;z-index:2}
+.hero-label{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:1.5rem}
+.hero-label::before,.hero-label::after{content:"";display:inline-block;width:28px;height:.5px;background:var(--gold)}
+.hero-title{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.025em;color:#fff;margin-bottom:1.25rem}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.42);max-width:560px;margin:0 auto 2.5rem;line-height:1.75}
+.hero-stats{display:inline-flex;align-items:center;gap:0;border:.5px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.hero-stat{padding:.75rem 2rem;text-align:center;border-right:.5px solid rgba(255,255,255,.08)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--gold);display:block;line-height:1}
+.hero-stat-label{font-size:10px;font-weight:400;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+
+/* SECTION DIVIDER */
+.section-divider{display:flex;align-items:center;gap:1.5rem;padding:0 3rem;margin:0 0 3rem}
+.divider-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.divider-line{flex:1;height:.5px;background:rgba(255,255,255,.07)}
+
+/* TOOLS GRID */
+.tools-section{padding:4rem 3rem 2rem;max-width:1200px;margin:0 auto}
+
+/* PRIMARY TOOL CARDS — large format */
+.primary-tools{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;margin-bottom:1.5px;background:rgba(255,255,255,.06);border-radius:8px;overflow:hidden}
+.tool-card-primary{background:var(--dark-2);padding:3rem;position:relative;overflow:hidden;transition:background .25s}
+.tool-card-primary:hover{background:var(--dark-3)}
+.tool-card-primary::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.tool-card-primary:hover::before{opacity:1}
+
+/* DEAL CARD — full width, revenue priority */
+.deal-card{background:var(--dark-2);padding:3rem;position:relative;overflow:hidden;transition:background .25s}
+.deal-card:hover{background:var(--dark-3)}
+.deal-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));opacity:.7}
+.deal-card-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+
+/* SECONDARY TOOLS — smaller */
+.secondary-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06);border-radius:8px;overflow:hidden;margin-bottom:1.5px}
+.tool-card-secondary{background:var(--dark-2);padding:2rem;position:relative;transition:background .25s}
+.tool-card-secondary:hover{background:var(--dark-3)}
+
+/* SHARED CARD ELEMENTS */
+.card-badge{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.5rem;padding:4px 10px;border-radius:2px}
+.badge-tool{color:var(--gold);background:rgba(196,163,90,.1);border:.5px solid rgba(196,163,90,.25)}
+.badge-deal{color:#fff;background:rgba(196,163,90,.2);border:.5px solid rgba(196,163,90,.4)}
+.badge-data{color:rgba(160,195,180,.9);background:rgba(45,106,79,.15);border:.5px solid rgba(45,106,79,.3)}
+.badge-guide{color:rgba(160,180,210,.9);background:rgba(50,80,140,.12);border:.5px solid rgba(50,80,140,.25)}
+.badge-new{color:var(--gold-light);background:rgba(196,163,90,.15);border:.5px solid rgba(196,163,90,.3)}
+
+.card-num{font-size:10px;font-weight:400;color:rgba(255,255,255,.18);letter-spacing:.12em;margin-bottom:.5rem}
+.card-title{font-family:var(--serif);font-size:clamp(22px,2.5vw,30px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:.75rem;letter-spacing:-.01em}
+.card-title em{font-style:italic;color:var(--gold-light)}
+.card-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:2rem}
+
+.card-title-sm{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:.5rem}
+.card-desc-sm{font-size:12px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:1.5rem}
+
+/* FEATURE LIST */
+.feature-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem}
+.feature-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.5}
+.feature-item::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+
+/* DEAL SPECIFIC FEATURES */
+.deal-features{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:2rem}
+.deal-feature{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:300;color:rgba(255,255,255,.45)}
+.deal-feature::before{content:"✓";color:var(--gold);font-size:11px;font-weight:500;flex-shrink:0}
+
+/* SMART BADGES */
+.smart-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.smart-badge{font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;letter-spacing:.04em}
+.smart-badge-green{color:rgba(100,200,140,.9);background:rgba(45,106,79,.2);border:.5px solid rgba(45,106,79,.35)}
+.smart-badge-gold{color:var(--gold-light);background:rgba(196,163,90,.1);border:.5px solid rgba(196,163,90,.25)}
+.smart-badge-blue{color:rgba(140,180,220,.85);background:rgba(50,100,180,.12);border:.5px solid rgba(50,100,180,.2)}
+
+/* CTAs */
+.cta-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;border-radius:2px;transition:opacity .2s;white-space:nowrap}
+.cta-primary:hover{opacity:.85}
+.cta-primary-lg{padding:14px 36px;font-size:13px}
+.cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:transparent;color:rgba(255,255,255,.55);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;border:.5px solid rgba(255,255,255,.15);border-radius:2px;transition:all .2s;white-space:nowrap}
+.cta-secondary:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.cta-ghost{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gold);text-decoration:none;letter-spacing:.04em;transition:gap .2s}
+.cta-ghost:hover{gap:10px}
+.cta-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+
+/* MANDATE CTA STRIP */
+.mandate-strip{background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.07);border-radius:6px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin:0 3rem 4rem;max-width:1200px;margin-left:auto;margin-right:auto}
+.mandate-strip-left{}
+.mandate-strip-eyebrow{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.mandate-strip-title{font-family:var(--serif);font-size:22px;font-weight:400;color:#fff;margin-bottom:.25rem}
+.mandate-strip-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,.35)}
+.mandate-strip-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+
+/* HOW TO USE */
+.how-section{padding:3rem;max-width:1200px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.how-card{padding:1.5rem;border:.5px solid rgba(255,255,255,.07);border-radius:4px}
+.how-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(196,163,90,.25);line-height:1;margin-bottom:1rem}
+.how-title{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);margin-bottom:.5rem}
+.how-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.65}
+
+/* PATHWAY SECTION */
+.pathway-section{padding:3rem;max-width:1200px;margin:0 auto 2rem}
+.pathway-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin-top:2rem}
+.pathway-card{background:var(--dark-2);padding:2rem 1.75rem}
+.pathway-type{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem}
+.pathway-title{font-family:var(--serif);font-size:17px;font-weight:400;color:rgba(255,255,255,.8);margin-bottom:.75rem}
+.pathway-tools{display:flex;flex-direction:column;gap:.4rem}
+.pathway-tool{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:300;color:rgba(255,255,255,.4)}
+.pathway-tool-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.pathway-tool a{color:rgba(196,163,90,.7);text-decoration:none;transition:color .2s}
+.pathway-tool a:hover{color:var(--gold)}
+
+/* DATA SECTION */
+.data-section{padding:3rem;max-width:1200px;margin:0 auto}
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin-top:2rem}
+.data-card{background:var(--dark-2);padding:2.5rem;position:relative;transition:background .25s}
+.data-card:hover{background:var(--dark-3)}
+.data-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.data-freq{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:3px 8px;border:.5px solid rgba(255,255,255,.1);border-radius:2px}
+.data-updated{font-size:10px;color:rgba(255,255,255,.25)}
+.data-title{font-family:var(--serif);font-size:22px;font-weight:400;color:#fff;margin-bottom:.5rem}
+.data-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:1.5rem}
+.data-byline{font-size:11px;color:rgba(196,163,90,.6);margin-top:1.5rem;padding-top:1rem;border-top:.5px solid rgba(255,255,255,.05)}
+
+/* FOOTER */
+footer{border-top:.5px solid rgba(255,255,255,.06);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:4rem}
+.footer-logo{font-family:var(--serif);font-size:16px;color:rgba(255,255,255,.55);text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;align-items:center;gap:1.5rem}
+.footer-links a{font-size:11px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{opacity:0;animation:fadeUp .5s ease forwards}
+.delay-1{animation-delay:.1s}
+.delay-2{animation-delay:.2s}
+.delay-3{animation-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:4rem 1.5rem 3.5rem}
+  .tools-section,.how-section,.pathway-section,.data-section{padding:2rem 1.5rem}
+  .primary-tools{grid-template-columns:1fr}
+  .secondary-tools{grid-template-columns:1fr}
+  .deal-card-inner{grid-template-columns:1fr}
+  .deal-features{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr}
+  .pathway-grid{grid-template-columns:1fr}
+  .data-grid{grid-template-columns:1fr}
+  .mandate-strip{flex-direction:column;align-items:flex-start;margin:0 1.5rem 3rem}
+  .hero-stats{flex-direction:column;gap:0}
+  .hero-stat{border-right:none;border-bottom:.5px solid rgba(255,255,255,.08);width:100%;padding:.75rem 1.5rem}
+  .hero-stat:last-child{border-bottom:none}
+  footer{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Altus<span>Bridge</span></a>
+  <div class="nav-links">
+    <a href="index.html#services">Services</a>
+    <a href="mandates.html">Mandates</a>
+    <a href="tools.html" style="color:var(--ink)">Tools</a>
+    <a href="gift-city-mauritius-difc.html">Insights</a>
+    <a href="index.html#cta">Contact</a>
+  </div>
+  <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="nav-cta">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-label animate">Decision Tools</p>
+    <h1 class="hero-title animate delay-1">Built for <em>real</em><br>structuring questions</h1>
+    <p class="hero-sub animate delay-2">Interactive calculators, deal screeners, and jurisdiction guides designed to improve decision quality before you commit time and capital to a process.</p>
+    <div class="hero-stats animate delay-3">
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <div class="hero-stat-label">Interactive tools</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">6</span>
+        <div class="hero-stat-label">Jurisdictions covered</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">2 min</span>
+        <div class="hero-stat-label">To a recommendation</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Free</span>
+        <div class="hero-stat-label">No registration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT A DEAL — Revenue priority, full width -->
+<div class="tools-section" id="tools" style="padding-bottom:0">
+  <div class="section-divider" style="padding:0;margin-bottom:2rem">
+    <span class="divider-label">Revenue-critical</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="deal-card" style="border-radius:8px;margin-bottom:1.5px">
+    <div class="deal-card-inner">
+      <div>
+        <span class="card-badge badge-deal">→ Submit a deal</span>
+        <p class="card-num">Revenue tool</p>
+        <h2 class="card-title" style="font-size:clamp(28px,3.5vw,44px)">Submit your<br><em>transaction</em></h2>
+        <p class="card-desc">For promoters, CFOs, M&A bankers, and CAs evaluating capital placement. PE exit bridge, LBO financing, pre-IPO fundraise, debt syndication — reviewed within one business day.</p>
+        <div class="smart-features">
+          <span class="smart-badge smart-badge-green">Live fit indicator</span>
+          <span class="smart-badge smart-badge-gold">WhatsApp pre-fill</span>
+          <span class="smart-badge smart-badge-blue">Same-day response</span>
+        </div>
+        <div class="cta-row">
+          <a href="submit-a-deal.html" class="cta-primary cta-primary-lg">Submit your deal →</a>
+          <a href="submit-a-deal.html#mandate" class="cta-secondary">View active mandate</a>
+        </div>
+      </div>
+      <div>
+        <div style="background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.08);border-radius:6px;padding:1.75rem">
+          <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem">Deal types accepted</p>
+          <div class="deal-features">
+            <div class="deal-feature">PE exit bridge</div>
+            <div class="deal-feature">LBO / acquisition finance</div>
+            <div class="deal-feature">Promoter funding</div>
+            <div class="deal-feature">Pre-IPO / growth equity</div>
+            <div class="deal-feature">AIF fundraising mandate</div>
+            <div class="deal-feature">Debt syndication</div>
+          </div>
+          <div style="border-top:.5px solid rgba(255,255,255,.06);padding-top:1rem;margin-top:.5rem">
+            <p style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.6">Active mandate: <span style="color:rgba(196,163,90,.7)">≥₹100 Cr ticket · 15%+ IRR target · PE on cap table preferred</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY TOOLS -->
+<div class="tools-section" style="padding-top:1.5rem">
+  <div class="section-divider" style="padding:0;margin-bottom:2rem">
+    <span class="divider-label">Structure & jurisdiction tools</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="primary-tools">
+    <!-- Jurisdiction Selector -->
+    <div class="tool-card-primary">
+      <span class="card-badge badge-tool">5-question flow</span>
+      <p class="card-num">Tool 01</p>
+      <h2 class="card-title">Find your <em>ideal</em><br>fund structure</h2>
+      <p class="card-desc">Answer 5 questions about your investors, asset class, and capital requirements. A scoring engine ranks all 6 structures — SEBI AIF, GIFT City FME, Mauritius GBL, DIFC QIF, Master-Feeder, and Deal-by-Deal SPV.</p>
+      <div class="feature-list">
+        <div class="feature-item">LP geography · asset class · ticket · currency · timeline</div>
+        <div class="feature-item">Match score bar chart vs all alternatives</div>
+        <div class="feature-item">Full pros, cons, and regulator detail for your recommendation</div>
+        <div class="feature-item">Result in under 2 minutes</div>
+      </div>
+      <div class="cta-row">
+        <a href="jurisdiction-selector.html" class="cta-primary">Find my structure →</a>
+        <span style="font-size:11px;color:rgba(255,255,255,.25)">~2 min · no registration</span>
+      </div>
+    </div>
+
+    <!-- AIF Fee Calculator -->
+    <div class="tool-card-primary">
+      <span class="card-badge badge-tool">Cost calculator</span>
+      <p class="card-num">Tool 02</p>
+      <h2 class="card-title">AIF setup <em>cost</em><br>calculator</h2>
+      <p class="card-desc">Estimate indicative setup and operating costs across SEBI AIF and GIFT City IFSCA structures. Verified against FY 2025–26 regulatory schedules for Category I and II India-linked funds.</p>
+      <div class="feature-list">
+        <div class="feature-item">One-time setup costs — registration, legal, trustee</div>
+        <div class="feature-item">Recurring annual operating costs by structure</div>
+        <div class="feature-item">Domestic AIF vs GIFT City FME comparison</div>
+        <div class="feature-item">FY 2025–26 fee schedules</div>
+      </div>
+      <div class="cta-row">
+        <a href="aif-fee-calculator.html" class="cta-primary">Estimate costs →</a>
+        <span style="font-size:11px;color:rgba(255,255,255,.25)">Instant · FY25–26 data</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECONDARY TOOLS -->
+  <div style="margin-top:1.5px">
+    <div class="secondary-tools">
+      <!-- Deal Screener -->
+      <div class="tool-card-secondary">
+        <span class="card-badge badge-tool" style="font-size:8.5px">Coming soon</span>
+        <p class="card-num">Tool 03</p>
+        <h3 class="card-title-sm">Deal <em>screener</em></h3>
+        <p class="card-desc-sm">Pre-qualify your transaction against Altus Bridge active mandate criteria before submitting. Revenue, EBITDA, ticket size, PE backing, sector — assessed in 60 seconds.</p>
+        <span class="cta-ghost" style="opacity:.4;cursor:default">Notify me when live</span>
+      </div>
+
+      <!-- AIF Timeline Calculator -->
+      <div class="tool-card-secondary">
+        <span class="card-badge badge-new" style="font-size:8.5px">Coming soon</span>
+        <p class="card-num">Tool 04</p>
+        <h3 class="card-title-sm">AIF setup <em>timeline</em></h3>
+        <p class="card-desc-sm">Week-by-week milestone planner for SEBI AIF, GIFT City FME, and Mauritius GBL. Enter your target first-close date and get a reverse-engineered setup schedule.</p>
+        <span class="cta-ghost" style="opacity:.4;cursor:default">Notify me when live</span>
+      </div>
+
+      <!-- Jurisdiction Guide -->
+      <div class="tool-card-secondary">
+        <span class="card-badge badge-guide">Practitioner guide</span>
+        <p class="card-num">Tool 05</p>
+        <h3 class="card-title-sm">Jurisdiction <em>comparison</em></h3>
+        <p class="card-desc-sm">GIFT City vs Mauritius vs DIFC vs Singapore. Regulation, tax, investor access, and use cases — the full practitioner comparison for India-linked fund structuring.</p>
+        <a href="gift-city-mauritius-difc.html" class="cta-ghost">Read the guide →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISITOR PATHWAYS -->
+<div class="pathway-section">
+  <div class="section-divider" style="padding:0;margin-bottom:2rem">
+    <span class="divider-label">Where to start</span>
+    <div class="divider-line"></div>
+  </div>
+  <div class="pathway-grid">
+    <div class="pathway-card">
+      <p class="pathway-type">If you are a</p>
+      <p class="pathway-title">Fund manager evaluating a structure</p>
+      <div class="pathway-tools">
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="jurisdiction-selector.html">Jurisdiction Selector — find your fit in 2 min</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="aif-fee-calculator.html">AIF Cost Calculator — estimate setup economics</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="aif-category-i-ii-domestic-gift-city.html">AIF Category I & II deep dive</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank">Book a structuring discussion</a></div>
+      </div>
+    </div>
+    <div class="pathway-card">
+      <p class="pathway-type">If you are a</p>
+      <p class="pathway-title">Promoter or CFO seeking capital</p>
+      <div class="pathway-tools">
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="submit-a-deal.html">Submit a Deal — reviewed within 1 business day</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="submit-a-deal.html#mandate">View active mandate criteria</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="private-credit-pe-exit-bridge-lbo-promoter-funding.html">Private credit mandate detail</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="https://wa.me/919930136884" target="_blank">WhatsApp Abhishek directly</a></div>
+      </div>
+    </div>
+    <div class="pathway-card">
+      <p class="pathway-type">If you are a</p>
+      <p class="pathway-title">Family office or LP evaluating India exposure</p>
+      <div class="pathway-tools">
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="gift-city-mauritius-difc.html">Jurisdiction comparison — GCC & Singapore entry routes</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="india-ecb-liberalisation-2026.html">ECB liberalisation — what changed for offshore lenders</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="jurisdiction-selector.html">Jurisdiction Selector — structure for your LP profile</a></div>
+        <div class="pathway-tool"><span class="pathway-tool-dot"></span><a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank">Book a confidential discussion</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA SECTION -->
+<div class="data-section">
+  <div class="section-divider" style="padding:0;margin-bottom:2rem">
+    <span class="divider-label">Data & flows</span>
+    <div class="divider-line"></div>
+  </div>
+  <div class="data-grid">
+    <div class="data-card" style="border-radius:6px 0 0 6px">
+      <div class="data-meta">
+        <span class="data-freq">Monthly</span>
+        <span class="data-updated">Updated Q2 2026</span>
+      </div>
+      <span class="card-badge badge-data" style="margin-bottom:1rem">Cross-border flows</span>
+      <h3 class="data-title">India ECB & UPI<br>internationalisation flows</h3>
+      <p class="data-sub">Monthly ECB pipeline data, UPI cross-border settlement volumes, and RBI Payments Vision 2028 milestones. Practitioner commentary on what the numbers mean for offshore lenders and India-linked capital.</p>
+      <a href="data/ecb-flows.html" class="cta-ghost">View data brief →</a>
+      <p class="data-byline">Maintained by Shaily Sharma · Senior Payments & Fintech Advisor · Meta India · ICICI Bank · Boku</p>
+    </div>
+    <div class="data-card" style="border-radius:0 6px 6px 0">
+      <div class="data-meta">
+        <span class="data-freq">Quarterly</span>
+        <span class="data-updated">Updated Q1 FY26</span>
+      </div>
+      <span class="card-badge badge-data" style="margin-bottom:1rem">Fund flows</span>
+      <h3 class="data-title">SEBI AIF quarterly<br>commitment & deployment</h3>
+      <p class="data-sub">SEBI AIF industry data — total commitments raised, capital deployed, Category I/II/III breakdown, and sector allocation trends. Context for fund managers benchmarking against the market.</p>
+      <a href="data/aif-quarterly.html" class="cta-ghost">View data brief →</a>
+      <p class="data-byline">Maintained by Abhishek Mohta · Altus Bridge · 15+ years across DCM, project finance & fund structuring</p>
+    </div>
+  </div>
+</div>
+
+<!-- MANDATE STRIP -->
+<div style="padding:0 3rem;max-width:1200px;margin:0 auto 5rem">
+  <div class="mandate-strip">
+    <div class="mandate-strip-left">
+      <p class="mandate-strip-eyebrow">Active capital mandate</p>
+      <p class="mandate-strip-title">Private credit — PE exit bridge, LBO & promoter funding</p>
+      <p class="mandate-strip-sub">≥₹100 Cr ticket · 15%+ IRR · PE or institutional co-investor preferred · same-day preliminary response</p>
+    </div>
+    <div class="mandate-strip-right">
+      <a href="submit-a-deal.html" class="cta-primary">Submit a deal →</a>
+      <a href="private-credit-pe-exit-bridge-lbo-promoter-funding.html" class="cta-secondary">View mandate</a>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="how-section" style="padding-top:0">
+  <div class="section-divider" style="padding:0;margin-bottom:2rem">
+    <span class="divider-label">How to use these tools</span>
+    <div class="divider-line"></div>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <p class="how-title">Use a tool to orient yourself</p>
+      <p class="how-desc">Start with the Jurisdiction Selector or the AIF Cost Calculator. These are designed to give you a directional answer in under 5 minutes — before you engage anyone.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <p class="how-title">Read the relevant guide</p>
+      <p class="how-desc">Each tool links to a deeper guide — AIF Category I & II, GIFT City vs Mauritius, ECB structures. These fill in the regulatory and tax context behind the tool output.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <p class="how-title">Book a structuring discussion</p>
+      <p class="how-desc">When you have a clear question — a specific structure, a deal, or a jurisdiction decision — book a 30-minute call. Come with a view. We'll pressure-test it together.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Altus<span>Bridge</span></a>
+  <div class="footer-links">
+    <a href="jurisdiction-selector.html">Jurisdiction Selector</a>
+    <a href="aif-fee-calculator.html">Fee Calculator</a>
+    <a href="submit-a-deal.html">Submit a Deal</a>
+    <a href="gift-city-mauritius-difc.html">GIFT City Guide</a>
+  </div>
+  <span class="footer-copy">© 2026 Altus Bridge · Mumbai · abhishek@altusbridge.in</span>
+</footer>
+
+</body>
+</html>
