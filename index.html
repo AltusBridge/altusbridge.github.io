@@ -37,9 +37,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,246,
 .btn-secondary:hover{border-color:rgba(255,255,255,.5);color:#fff}
 .btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:14px 20px;background:transparent;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.04em;text-decoration:none;transition:color .2s}
 .btn-ghost:hover{color:rgba(255,255,255,.7)}
+/* ABOUT SECTION */
+#about{background:var(--surface);border-bottom:.5px solid var(--border);padding:6rem 3rem}
+.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;margin-top:3rem}
+.about-left{position:sticky;top:100px}
+.about-quote{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);font-weight:400;line-height:1.35;color:var(--ink);letter-spacing:-.01em;margin-bottom:1.5rem}
+.about-quote em{font-style:italic;color:var(--gold-dark)}
+.about-tagline{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.5rem}
+.about-name{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--ink);margin-bottom:.25rem}
+.about-role{font-size:13px;font-weight:300;color:var(--ink-muted);margin-bottom:1.5rem;line-height:1.6}
+.about-bio p{font-size:14px;font-weight:300;color:var(--ink-mid);line-height:1.85;margin-bottom:1.25rem}
+.about-bio strong{font-weight:500;color:var(--ink)}
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.about-metric{padding:1.25rem;border:.5px solid var(--border);border-radius:4px;background:var(--surface-2)}
+.about-metric-val{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);line-height:1;margin-bottom:6px}
+.about-metric-val em{font-style:italic;color:var(--gold-dark)}
+.about-metric-label{font-size:11px;font-weight:400;color:var(--ink-muted);letter-spacing:.02em;line-height:1.5}
+.about-career{margin-top:2rem;border-top:.5px solid var(--border);padding-top:1.5rem}
+.about-career-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.career-list{display:flex;flex-direction:column;gap:0}
+.career-row{display:flex;gap:1.5rem;padding:.9rem 0;border-bottom:.5px solid var(--border-light);align-items:baseline}
+.career-row:last-child{border-bottom:none}
+.career-firm{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--ink);min-width:170px;line-height:1.3}
+.career-role{font-size:12px;font-weight:300;color:var(--ink-mid);flex:1;line-height:1.55}
+.about-edu{margin-top:1.5rem;padding-top:1.25rem;border-top:.5px solid var(--border);font-size:12px;color:var(--ink-muted);line-height:1.7}
+.about-edu strong{color:var(--ink-mid);font-weight:500}
+.about-cta-row{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.about-cta-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:var(--dark);color:var(--surface);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;border-radius:2px;transition:opacity .2s}
+.about-cta-primary:hover{opacity:.85}
+.about-cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:transparent;color:var(--ink-mid);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em;text-decoration:none;border:.5px solid var(--border);border-radius:2px;transition:all .2s}
+.about-cta-secondary:hover{border-color:var(--ink-muted);color:var(--ink)}
 /* AUDIENCE ROUTING */
 .audience-section{background:var(--surface-2);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:3.5rem 3rem}
-.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:6px;overflow:hidden;max-width:1100px;margin:0 auto}
+.audience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:6px;overflow:hidden;max-width:1280px;margin:0 auto}
 .audience-card{background:var(--surface);padding:2rem 1.75rem;transition:background .2s;text-decoration:none;display:block}
 .audience-card:hover{background:var(--gold-bg)}
 .audience-card:hover .audience-arrow{color:var(--gold)}
@@ -170,7 +200,8 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
 .footer-links a{font-size:11px;color:rgba(255,255,255,.25);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .footer-links a:hover{color:rgba(255,255,255,.5)}
 .footer-copy{font-size:11px;color:rgba(255,255,255,.2);font-weight:300}
-@media(max-width:900px){nav{padding:0 1.5rem}.nav-links{display:none}section{padding:4rem 1.5rem}#hero{padding:7rem 1.5rem 4rem}.services-grid,.mandate-scroll,.payments-grid{grid-template-columns:1fr}.coinvest-grid,.newsletter-grid,#cta .container{grid-template-columns:1fr;gap:2.5rem}.hero-stats{gap:2rem}.audience-grid{grid-template-columns:1fr}.tools-strip{padding:2.5rem 1.5rem}.tools-strip-grid{grid-template-columns:1fr 1fr}.audience-section{padding:2.5rem 1.5rem}footer{padding:2rem 1.5rem}}
+@media(max-width:1100px){.audience-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){nav{padding:0 1.5rem}.nav-links{display:none}section{padding:4rem 1.5rem}#hero{padding:7rem 1.5rem 4rem}.services-grid,.mandate-scroll,.payments-grid{grid-template-columns:1fr}.coinvest-grid,.newsletter-grid,#cta .container,.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-left{position:static}.hero-stats{gap:2rem}.audience-grid{grid-template-columns:1fr}.tools-strip{padding:2.5rem 1.5rem}.tools-strip-grid{grid-template-columns:1fr 1fr}.audience-section{padding:2.5rem 1.5rem}#about{padding:4rem 1.5rem}.career-row{flex-direction:column;gap:.25rem}.career-firm{min-width:0}footer{padding:2rem 1.5rem}}
 </style>
 </head>
 <body>
@@ -182,6 +213,7 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
     <li><a href="mandates.html">Mandates</a></li>
     <li><a href="tools.html">Tools</a></li>
     <li><a href="gift-city-mauritius-difc.html">Insights</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#cta">Contact</a></li>
   </ul>
   <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="nav-cta">Book a call</a>
@@ -216,38 +248,49 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
     <p style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--ink)">What brings you here?</p>
   </div>
   <div class="audience-grid">
+    <a href="mandates.html" class="audience-card">
+      <p class="audience-eyebrow">Family office / LP</p>
+      <h3 class="audience-title">Evaluating India-linked opportunities</h3>
+      <ul class="audience-steps">
+        <li>View live mandates &mdash; 5 active across asset classes</li>
+        <li>Co-investment platform &mdash; deal-by-deal SPV access</li>
+        <li>GIFT City vs Mauritius vs DIFC jurisdiction guide</li>
+        <li>Register for LP data room access</li>
+      </ul>
+      <span class="audience-arrow">Explore mandates &rarr;</span>
+    </a>
     <a href="tools.html#tools" class="audience-card">
       <p class="audience-eyebrow">Fund manager</p>
       <h3 class="audience-title">Evaluating a fund structure or jurisdiction</h3>
       <ul class="audience-steps">
-        <li>Jurisdiction Selector — find your fit in 2 min</li>
-        <li>AIF Cost Calculator — estimate setup economics</li>
+        <li>Jurisdiction Selector &mdash; find your fit in 2 min</li>
+        <li>AIF Cost Calculator &mdash; estimate setup economics</li>
         <li>AIF Category I &amp; II guide</li>
         <li>Book a structuring discussion</li>
       </ul>
       <span class="audience-arrow">Start with the tools &rarr;</span>
     </a>
     <a href="submit-a-deal.html" class="audience-card">
-      <p class="audience-eyebrow">Promoter / CFO / banker</p>
-      <h3 class="audience-title">Seeking capital for a transaction</h3>
+      <p class="audience-eyebrow">Promoter / CFO</p>
+      <h3 class="audience-title">Raising capital for a transaction</h3>
       <ul class="audience-steps">
-        <li>Submit a Deal — reviewed within 1 business day</li>
-        <li>Active mandate: &ge;&#8377;100 Cr &middot; 15%+ IRR</li>
+        <li>Submit a Deal &mdash; reviewed within 1 business day</li>
         <li>PE exit bridge, LBO, promoter funding</li>
-        <li>WhatsApp Abhishek directly</li>
+        <li>Private credit from &ge; &#8377;100 Cr</li>
+        <li>Institutional-grade placement review</li>
       </ul>
       <span class="audience-arrow">Submit your transaction &rarr;</span>
     </a>
-    <a href="mandates.html" class="audience-card">
-      <p class="audience-eyebrow">Family office / LP</p>
-      <h3 class="audience-title">Evaluating India-linked investment opportunities</h3>
+    <a href="submit-a-deal.html?source=intermediary" class="audience-card">
+      <p class="audience-eyebrow">Banker / CA / Advisor</p>
+      <h3 class="audience-title">Introducing a client or a deal</h3>
       <ul class="audience-steps">
-        <li>View live mandates — 5 active across asset classes</li>
-        <li>Co-investment platform — deal-by-deal SPV access</li>
-        <li>GIFT City vs Mauritius vs DIFC jurisdiction guide</li>
-        <li>Register for LP data room access</li>
+        <li>Refer a transaction &mdash; structured review and feedback</li>
+        <li>Co-originate with clear economics</li>
+        <li>Access India, GIFT City, Mauritius, DIFC capabilities</li>
+        <li>Build a long-term referral relationship</li>
       </ul>
-      <span class="audience-arrow">Explore mandates &rarr;</span>
+      <span class="audience-arrow">Partner with Altus Bridge &rarr;</span>
     </a>
   </div>
 </div>
@@ -304,25 +347,25 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
   <div class="container">
     <p class="section-label">Live Mandates</p>
     <h2 class="section-title" style="color:#fff">Active deal pipeline</h2>
-    <p class="section-intro">Selected live mandates where capital is being placed or structured. Reach out if you are an investor or advisor with a relevant opportunity.</p>
+    <p class="section-intro">Selected live mandates where capital is being placed or structured. Mandate names, manager identities, and full documentation are disclosed only to qualified investors under NDA.</p>
     <div class="mandate-scroll">
       <div class="mandate-card">
         <p class="mandate-status">Placement Open</p>
-        <h3 class="mandate-title">Diageo PLC Fixed Coupon Note</h3>
-        <p class="mandate-meta">Fixed income &middot; Diageo PLC underlying &middot; Structured product via DFSA-regulated multi-family office &middot; Targeting HNI &amp; family office investors</p>
+        <h3 class="mandate-title">Fixed Coupon Note &mdash; Premium Spirits Underlying</h3>
+        <p class="mandate-meta">Structured fixed income &middot; FTSE 100 premium spirits underlying &middot; DFSA-regulated placement &middot; Targeting HNI &amp; family office investors</p>
         <div class="mandate-tags"><span class="mtag">Fixed Income</span><span class="mtag">DFSA</span><span class="mtag">HNI / FO</span></div>
       </div>
       <div class="mandate-card">
         <p class="mandate-status">Fundraising Active</p>
-        <h3 class="mandate-title">Onterra Capital AIF — Real Estate Credit</h3>
-        <p class="mandate-meta">SEBI Category II AIF &middot; &#8377;300 Cr + &#8377;300 Cr greenshoe &middot; 18&ndash;20% IRR &middot; Secured real estate credit &middot; MMR &amp; Bangalore growth corridors</p>
-        <div class="mandate-tags"><span class="mtag">AIF Cat II</span><span class="mtag">Real Estate</span><span class="mtag">18-20% IRR</span></div>
+        <h3 class="mandate-title">SEBI Cat II AIF &mdash; Secured Real Estate Credit</h3>
+        <p class="mandate-meta">Domestic AIF &middot; Mid-teens+ target IRR &middot; Senior secured debt to mid-scale residential developers &middot; Tier-1 metro growth corridors</p>
+        <div class="mandate-tags"><span class="mtag">AIF Cat II</span><span class="mtag">Real Estate</span><span class="mtag">Mid-Teens+ IRR</span></div>
       </div>
       <div class="mandate-card">
         <p class="mandate-status">Pre-IPO Fundraise</p>
-        <h3 class="mandate-title">Soleos Energy — Solar EPC</h3>
-        <p class="mandate-meta">Gujarat-based solar EPC &amp; developer &middot; Main Board IPO-bound &middot; 654 MW order book &middot; Institutional &amp; family office LP targeting</p>
-        <div class="mandate-tags"><span class="mtag">Solar</span><span class="mtag">Pre-IPO</span><span class="mtag">Gujarat</span></div>
+        <h3 class="mandate-title">Pre-IPO Growth Equity &mdash; Solar EPC</h3>
+        <p class="mandate-meta">Indian solar EPC &amp; developer &middot; Main Board IPO-bound &middot; Substantial active order book &middot; Institutional &amp; family office LP targeting</p>
+        <div class="mandate-tags"><span class="mtag">Solar</span><span class="mtag">Pre-IPO</span><span class="mtag">Renewables</span></div>
       </div>
     </div>
     <div class="mandates-cta">
@@ -451,7 +494,7 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
           2. Replace YOUR_FORM_ID with that ID
           3. Set redirect to: https://altusbridge.in?subscribed=1
         -->
-        <form action="https://formspree.io/f/xlgajdra" method="POST">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <input type="hidden" name="_subject" value="New Altus Bridge Briefing subscriber">
           <input type="hidden" name="_next" value="https://www.altusbridge.in?subscribed=1">
           <div class="form-field">
@@ -523,6 +566,75 @@ footer{background:var(--dark);padding:2rem 3rem;border-top:.5px solid rgba(255,2
         <p class="insight-desc">Monthly market updates, mandate news, regulatory developments, and co-investment opportunities for subscribers.</p>
         <span class="insight-read">Subscribe &rarr;</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT ABHISHEK -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About the founder</p>
+    <h2 class="section-title">15 years of cross-border capital. ₹20,000+ Cr of deal activity.</h2>
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="about-quote">Capital moves across jurisdictions when the <em>structure</em>, the <em>regulation</em>, and the <em>investor</em> all fit. Altus Bridge exists to make that fit.</p>
+        <p class="about-tagline">Founder &amp; Principal</p>
+        <h3 class="about-name">Abhishek Mohta</h3>
+        <p class="about-role">Independent advisor on cross-border capital, fund structuring, and private credit mandates for India-linked opportunities.</p>
+        <div class="about-cta-row">
+          <a href="https://calendar.app.google/Fq1wJ83qCrDhBnneA" target="_blank" class="about-cta-primary">Book a call &rarr;</a>
+          <a href="https://www.linkedin.com/in/abhishekmohta" target="_blank" class="about-cta-secondary">LinkedIn profile</a>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="about-bio">
+          <p>Abhishek built Altus Bridge after 15 years inside the machinery of cross-border capital &mdash; from <strong>HDFC Bank&rsquo;s Project Finance &amp; DCM</strong> desk covering India&rsquo;s energy and infrastructure book, to <strong>Natixis Corporate &amp; Investment Banking</strong> structuring syndications with MUFG, SMBC, Barclays, and Soci&eacute;t&eacute; G&eacute;n&eacute;rale across APAC, to <strong>Amicorp Group</strong> advising HNI, family office, and corporate principals on fund structures across SEBI AIF, GIFT City, Singapore VCC, Luxembourg RAIF, Mauritius GBC, DIFC, and ADGM.</p>
+          <p>Earlier, at <strong>Essar Group</strong>, he led international business development and project finance across Dubai, Mauritius, and Africa &mdash; closing a &#8377;750 Cr port project finance syndication and raising offshore capital via multilateral development banks including the African Development Bank.</p>
+          <p>The thread through all of it: understanding how capital <em>actually</em> moves &mdash; the regulatory gates, the structuring choices, the investor committees, and the commercial realities that determine whether a mandate closes or stalls.</p>
+        </div>
+        <div class="about-metrics">
+          <div class="about-metric">
+            <p class="about-metric-val"><em>&#8377;20,000+</em> Cr</p>
+            <p class="about-metric-label">Total capital activity &mdash; debt syndications, club deals, structured mandates, fund raises</p>
+          </div>
+          <div class="about-metric">
+            <p class="about-metric-val"><em>&#8377;7,000</em> Cr</p>
+            <p class="about-metric-label">Energy &amp; infra loan portfolio managed at HDFC Bank across 20+ corporates</p>
+          </div>
+          <div class="about-metric">
+            <p class="about-metric-val">USD <em>500M</em></p>
+            <p class="about-metric-label">Project finance portfolio at Natixis across data centres, renewables, PPP</p>
+          </div>
+          <div class="about-metric">
+            <p class="about-metric-val"><em>30+</em></p>
+            <p class="about-metric-label">Active mandates across HNI, family office, and institutional LP network</p>
+          </div>
+        </div>
+        <div class="about-career">
+          <p class="about-career-label">Career</p>
+          <div class="career-list">
+            <div class="career-row">
+              <p class="career-firm">Amicorp Group</p>
+              <p class="career-role">Associate Director &mdash; Capital Markets &amp; Fund Structuring. Advised on SEBI AIF, Singapore VCC, Luxembourg RAIF, Mauritius GBC, DIFC, ADGM structures for HNI, family office, and institutional clients.</p>
+            </div>
+            <div class="career-row">
+              <p class="career-firm">Natixis CIB</p>
+              <p class="career-role">Vice President &mdash; Real Assets, Infrastructure &amp; Energy Finance. USD 500M portfolio; APAC syndications with MUFG, SMBC, Barclays, Soci&eacute;t&eacute; G&eacute;n&eacute;rale.</p>
+            </div>
+            <div class="career-row">
+              <p class="career-firm">HDFC Bank</p>
+              <p class="career-role">AVP &mdash; IB/DCM, Project Finance. &#8377;7,000 Cr energy &amp; infra portfolio; biofuels, waste-to-gas, solar manufacturing, solar project coverage.</p>
+            </div>
+            <div class="career-row">
+              <p class="career-firm">Essar Group</p>
+              <p class="career-role">Project Finance &amp; International Business Development &mdash; &#8377;750 Cr port financing; cross-border deal structuring across Dubai, Mauritius, and Africa; DFI engagement with AfDB and World Bank affiliates.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-edu">
+          <strong>Education:</strong> Executive MBA (Finance), S.P. Jain School of Global Management, Mumbai (2020) &middot; B.Tech Electrical Engineering, KIIT University (2010)
+        </div>
+      </div>
     </div>
   </div>
 </section>
